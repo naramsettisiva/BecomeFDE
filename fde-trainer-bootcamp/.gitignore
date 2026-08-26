@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+.ipynb_checkpoints/
+data/index/
+data/cache/
+storage/
+chroma/
+qdrant_storage/
+*.sqlite3
+teaching/recordings/*.mov
+teaching/recordings/*.mp4
+.cost_log.jsonl
+.pytest_cache/
+.ruff_cache/
