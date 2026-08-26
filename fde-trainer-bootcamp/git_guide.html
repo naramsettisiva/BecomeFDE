@@ -1,0 +1,818 @@
+<title>Git Field Guide</title>
+
+<style>
+  /* Same visual system as the course hub — slate infrastructure, amber signal.
+     A course and its companion reference should read as a family. */
+  :root {
+    --ground:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF0F4;
+    --rail:#D8DEE6; --rail-soft:#E6EAF0;
+    --ink:#10161D; --ink-2:#3B4754; --ink-3:#6C7A89;
+    --signal:#B96A05; --signal-ink:#8A4F03; --signal-wash:#FBF0DE;
+    --good:#1F7A5A; --good-wash:#E7F3EE;
+    --crit:#A32B2B; --crit-wash:#FBECEC;
+    --blue:#4A6580;
+    --shadow:0 1px 2px rgba(16,22,29,.05),0 8px 24px -12px rgba(16,22,29,.14);
+    --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --f-body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --max:1000px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#0C1116; --surface:#131A22; --surface-2:#1A232D;
+      --rail:#26313D; --rail-soft:#1D2731;
+      --ink:#E8EDF2; --ink-2:#B3BFCB; --ink-3:#7E8C9A;
+      --signal:#F0A93B; --signal-ink:#F5C170; --signal-wash:#241B0C;
+      --good:#4FBF93; --good-wash:#0F2019;
+      --crit:#E0736D; --crit-wash:#2A1414;
+      --blue:#7A9BBE;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#0C1116; --surface:#131A22; --surface-2:#1A232D;
+    --rail:#26313D; --rail-soft:#1D2731;
+    --ink:#E8EDF2; --ink-2:#B3BFCB; --ink-3:#7E8C9A;
+    --signal:#F0A93B; --signal-ink:#F5C170; --signal-wash:#241B0C;
+    --good:#4FBF93; --good-wash:#0F2019;
+    --crit:#E0736D; --crit-wash:#2A1414;
+    --blue:#7A9BBE;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -16px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--f-body); font-size:16px; line-height:1.58;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  /* ── header ─────────────────────────────────────────────── */
+  header.top { background:var(--surface); border-bottom:1px solid var(--rail); }
+  .top-in { max-width:var(--max); margin:0 auto; padding:38px 24px 30px; }
+  .eyebrow {
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--signal-ink); margin:0 0 12px;
+  }
+  h1 {
+    font-family:var(--f-display); font-weight:700;
+    font-size:clamp(2rem,5vw,3.1rem); line-height:1.03;
+    letter-spacing:-.025em; margin:0 0 14px; text-wrap:balance;
+  }
+  .lede { font-size:1.05rem; color:var(--ink-2); max-width:60ch; margin:0; }
+  .lede strong { color:var(--ink); font-weight:600; }
+
+  /* ── nav ────────────────────────────────────────────────── */
+  nav.jump {
+    position:sticky; top:0; z-index:30;
+    background:color-mix(in srgb, var(--ground) 90%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--rail);
+  }
+  .jump-in {
+    max-width:var(--max); margin:0 auto; padding:9px 24px;
+    display:flex; gap:6px; flex-wrap:wrap; align-items:center;
+  }
+  .jump a {
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none;
+    color:var(--ink-3); padding:5px 10px; border-radius:3px;
+  }
+  .jump a:hover { color:var(--ink); background:var(--surface-2); }
+  .jump a.hot { color:var(--crit); font-weight:600; }
+  .jump a:focus-visible { outline:2px solid var(--signal); outline-offset:1px; }
+
+  /* ── sections ───────────────────────────────────────────── */
+  section { padding:46px 0; }
+  section + section { border-top:1px solid var(--rail-soft); }
+  h2 {
+    font-family:var(--f-display); font-weight:700; font-size:1.5rem;
+    letter-spacing:-.018em; margin:0 0 6px;
+  }
+  h2 .num {
+    font-family:var(--f-mono); font-size:.75rem; color:var(--signal);
+    letter-spacing:.1em; display:block; margin-bottom:4px; font-weight:600;
+  }
+  h3 {
+    font-family:var(--f-display); font-weight:700; font-size:1.02rem;
+    margin:26px 0 7px; letter-spacing:-.008em;
+  }
+  .note { color:var(--ink-3); max-width:64ch; margin:0 0 22px; font-size:.94rem; }
+  p { max-width:66ch; }
+
+  /* ── code ───────────────────────────────────────────────── */
+  .code {
+    position:relative; background:var(--surface-2);
+    border:1px solid var(--rail); border-left:3px solid var(--signal);
+    border-radius:0 3px 3px 0; margin:0 0 16px;
+  }
+  .code pre {
+    margin:0; padding:15px 52px 15px 17px; overflow-x:auto;
+    font-family:var(--f-mono); font-size:.79rem; line-height:1.75; color:var(--ink-2);
+  }
+  .code .c { color:var(--ink-3); }
+  .code .k { color:var(--signal-ink); }
+  .code .o { color:var(--good); }
+  .copy {
+    position:absolute; top:8px; right:8px;
+    font-family:var(--f-mono); font-size:9.5px; letter-spacing:.08em;
+    text-transform:uppercase; background:var(--surface);
+    border:1px solid var(--rail); color:var(--ink-3);
+    padding:4px 8px; border-radius:3px; cursor:pointer;
+  }
+  .copy:hover { color:var(--ink); border-color:var(--ink-3); }
+  .copy.done { color:var(--good); border-color:var(--good); }
+  code {
+    font-family:var(--f-mono); font-size:.86em;
+    background:var(--surface-2); padding:1px 5px; border-radius:2px;
+    border:1px solid var(--rail-soft);
+  }
+
+  /* ── callouts ───────────────────────────────────────────── */
+  .call {
+    border-radius:3px; padding:14px 17px; margin:0 0 18px;
+    font-size:.91rem; border-left:3px solid var(--signal);
+    background:var(--signal-wash); color:var(--ink-2);
+  }
+  .call.warn { border-color:var(--crit); background:var(--crit-wash); }
+  .call.good { border-color:var(--good); background:var(--good-wash); }
+  .call b {
+    display:block; font-family:var(--f-display); color:var(--ink);
+    font-size:.95rem; margin-bottom:3px;
+  }
+
+  /* ── tables ─────────────────────────────────────────────── */
+  .tw { overflow-x:auto; border:1px solid var(--rail); border-radius:3px; margin:0 0 18px; }
+  table { border-collapse:collapse; width:100%; font-size:.88rem; min-width:420px; }
+  th,td { text-align:left; padding:9px 13px; border-bottom:1px solid var(--rail-soft); vertical-align:top; }
+  thead th {
+    font-family:var(--f-mono); font-size:10px; letter-spacing:.11em;
+    text-transform:uppercase; color:var(--ink-3);
+    background:var(--surface-2); border-bottom:1px solid var(--rail);
+  }
+  tbody tr:last-child td { border-bottom:0; }
+  td code { white-space:nowrap; }
+
+  /* ── the daily loop card ────────────────────────────────── */
+  .loop {
+    background:var(--surface); border:1px solid var(--rail);
+    border-top:3px solid var(--signal); border-radius:3px;
+    padding:24px; box-shadow:var(--shadow);
+  }
+  .loop h3 { margin-top:0; }
+
+  /* ── panic search ───────────────────────────────────────── */
+  .search {
+    display:flex; gap:9px; align-items:center; margin:0 0 20px;
+    background:var(--surface); border:1px solid var(--rail);
+    border-radius:3px; padding:10px 13px;
+  }
+  .search input {
+    flex:1; border:0; background:transparent; color:var(--ink);
+    font-family:var(--f-body); font-size:.95rem; outline:none; min-width:0;
+  }
+  .search input::placeholder { color:var(--ink-3); }
+  .search .hint { font-family:var(--f-mono); font-size:10px; color:var(--ink-3); white-space:nowrap; }
+
+  .panic { display:grid; gap:1px; background:var(--rail); border:1px solid var(--rail); border-radius:3px; }
+  .p-item { background:var(--surface); padding:0; }
+  .p-item[hidden] { display:none; }
+  .p-q {
+    width:100%; text-align:left; background:none; border:0; cursor:pointer;
+    font-family:var(--f-display); font-weight:600; font-size:.97rem; color:var(--ink);
+    padding:15px 17px; display:flex; align-items:center; gap:11px;
+  }
+  .p-q:hover { background:var(--surface-2); }
+  .p-q:focus-visible { outline:2px solid var(--signal); outline-offset:-2px; }
+  .p-q .mark {
+    font-family:var(--f-mono); font-size:11px; color:var(--crit);
+    flex-shrink:0; width:14px;
+  }
+  .p-a { padding:0 17px 18px 42px; }
+  .p-a p:first-child { margin-top:0; }
+  .p-item.open .p-q .mark::after { content:"−"; }
+  .p-item .p-q .mark::after { content:"+"; }
+  .noresult { padding:22px; text-align:center; color:var(--ink-3); font-size:.92rem; }
+
+  /* ── diagram ────────────────────────────────────────────── */
+  .diagram { margin:0 0 20px; overflow-x:auto; }
+  .diagram svg { display:block; min-width:640px; width:100%; height:auto; }
+
+  /* ── cheat sheet ────────────────────────────────────────── */
+  .sheet { display:grid; gap:16px; }
+  @media (min-width:760px) { .sheet { grid-template-columns:1fr 1fr; } }
+  .sheet .code { margin:0; }
+  .sheet h3 { margin:0 0 8px; }
+
+  footer {
+    border-top:1px solid var(--rail); padding:26px 0 60px;
+    font-family:var(--f-mono); font-size:11px; color:var(--ink-3); line-height:1.9;
+  }
+  footer b { color:var(--ink-2); font-weight:500; }
+
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<header class="top">
+  <div class="top-in">
+    <p class="eyebrow">FDE Trainer Bootcamp · companion reference</p>
+    <h1>Git Field Guide</h1>
+    <p class="lede">
+      Git from a macOS terminal, for someone who has never used one.
+      <strong>25 minutes of setup, once.</strong> After that it's four commands a day — and a
+      panic section for the evening one of them doesn't work.
+    </p>
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="jump-in">
+    <a href="#model">The model</a>
+    <a href="#setup">Setup</a>
+    <a href="#daily">Daily loop</a>
+    <a href="#reading">Reading git</a>
+    <a href="#panic" class="hot">⚠ When it breaks</a>
+    <a href="#sheet">Cheat sheet</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ─────────────────────────────────────────── mental model -->
+<section id="model">
+  <h2><span class="num">Part 0</span>The mental model</h2>
+  <p class="note">
+    Almost every beginner git problem traces back to not having this picture. Five minutes here
+    saves an hour later. Your work lives in four places, and git moves it between them.
+  </p>
+
+  <div class="diagram">
+    <svg viewBox="0 0 900 240" role="img" aria-label="Four git locations: working directory, staging area, local repository, and GitHub, connected by add, commit, push, pull and restore.">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--signal)"/>
+        </marker>
+        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-3)"/>
+        </marker>
+      </defs>
+
+      <!-- boxes -->
+      <g font-family="IBM Plex Sans, sans-serif">
+        <rect x="8"   y="60" width="180" height="86" rx="4" fill="var(--surface)" stroke="var(--rail)"/>
+        <rect x="248" y="60" width="150" height="86" rx="4" fill="var(--surface)" stroke="var(--rail)"/>
+        <rect x="458" y="60" width="170" height="86" rx="4" fill="var(--surface)" stroke="var(--rail)"/>
+        <rect x="700" y="60" width="180" height="86" rx="4" fill="var(--surface)" stroke="var(--signal)" stroke-width="2"/>
+
+        <text x="98"  y="90"  text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Working</text>
+        <text x="98"  y="108" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">directory</text>
+        <text x="98"  y="130" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">the files you edit</text>
+
+        <text x="323" y="90"  text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Staging</text>
+        <text x="323" y="108" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">area</text>
+        <text x="323" y="130" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">"I mean to save these"</text>
+
+        <text x="543" y="90"  text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Local</text>
+        <text x="543" y="108" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">repository</text>
+        <text x="543" y="130" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">history, on your Mac</text>
+
+        <text x="790" y="90"  text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">GitHub</text>
+        <text x="790" y="108" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">(remote)</text>
+        <text x="790" y="130" text-anchor="middle" font-size="11.5" fill="var(--ink-3)">the internet</text>
+      </g>
+
+      <!-- forward arrows -->
+      <g stroke="var(--signal)" stroke-width="1.6" fill="none" marker-end="url(#ar)">
+        <path d="M192 92 L242 92"/>
+        <path d="M402 92 L452 92"/>
+        <path d="M632 92 L694 92"/>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--signal-ink)" text-anchor="middle">
+        <text x="217" y="82">git add</text>
+        <text x="427" y="82">git commit</text>
+        <text x="663" y="82">git push</text>
+      </g>
+
+      <!-- return arrows -->
+      <g stroke="var(--ink-3)" stroke-width="1.2" fill="none" marker-end="url(#ar2)" stroke-dasharray="3 3">
+        <path d="M242 122 L192 122"/>
+        <path d="M694 122 L632 122"/>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--ink-3)" text-anchor="middle">
+        <text x="217" y="140">git restore</text>
+        <text x="663" y="140">git pull</text>
+      </g>
+
+      <!-- annotation -->
+      <g font-family="IBM Plex Sans, sans-serif" font-size="12.5">
+        <path d="M543 152 L543 182 L790 182 L790 152" stroke="var(--rail)" stroke-width="1.4" fill="none"/>
+        <text x="666" y="205" text-anchor="middle" fill="var(--ink-2)">
+          Commit and push are different steps. Committing saves history locally —
+        </text>
+        <text x="666" y="223" text-anchor="middle" fill="var(--ink-2)">
+          nothing reaches GitHub until you push.
+        </text>
+      </g>
+      <g font-family="IBM Plex Sans, sans-serif" font-size="12.5">
+        <text x="98" y="42" text-anchor="middle" fill="var(--ink-3)">on your Mac ──────────────────────────────────►</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="call">
+    <b>The two questions everyone asks in week one</b>
+    <em>"I committed — why isn't it on GitHub?"</em> Because commit and push are separate.
+    Commit saves locally; push publishes.<br>
+    <em>"I edited a file — why wasn't it committed?"</em> Because you didn't <code>git add</code>
+    it. Git only commits what you staged.
+  </div>
+
+  <p>That's the whole model. Everything below is mechanics.</p>
+</section>
+
+<!-- ─────────────────────────────────────────── setup -->
+<section id="setup">
+  <h2><span class="num">Part 1</span>One-time setup · 25 minutes</h2>
+  <p class="note">
+    The repo ships a script that walks all of this interactively and checks its own work.
+    Run it first; the manual steps below are here so you understand what it did.
+  </p>
+
+  <div class="code"><pre><span class="k">make</span> git-setup     <span class="c"># or: bash scripts/git_setup.sh</span></pre></div>
+
+  <h3>1 · Install git and know which one you have</h3>
+  <div class="code"><pre>brew install git
+
+<span class="c"># open a NEW terminal, then:</span>
+which git
+<span class="c">#  want: /opt/homebrew/bin/git   (Apple Silicon)</span>
+<span class="c">#    or: /usr/local/bin/git      (Intel)</span>
+<span class="c">#   NOT: /usr/bin/git            ← Apple's older build</span></pre></div>
+  <p class="note" style="margin-bottom:0">
+    If you get <code>/usr/bin/git</code>, Homebrew isn't first on your PATH:
+    <code>echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' &gt;&gt; ~/.zprofile</code> then
+    <code>exec zsh -l</code>. Apple's git works fine for this course — this is tidiness.
+  </p>
+
+  <h3>2 · Tell git who you are</h3>
+  <div class="code"><pre>git config --global user.name  <span class="o">"Siva Naramsetti"</span>
+git config --global user.email <span class="o">"your@email.com"</span></pre></div>
+  <p class="note" style="margin-bottom:0">
+    Use the same email as your GitHub account, or GitHub's private no-reply address
+    (Settings → Emails). If they don't match, commits show as an unattached grey avatar
+    instead of linking to your profile — which matters when the commit history <em>is</em>
+    the portfolio.
+  </p>
+
+  <h3>3 · Set your editor before vim ambushes you</h3>
+  <div class="call warn">
+    <b>Do this one now</b>
+    Run <code>git commit</code> without <code>-m</code> and a fresh Mac opens <strong>vim</strong>,
+    which does not tell you how to leave. If it catches you first: press <code>Esc</code>, then
+    type <code>:wq</code> and Return. Write that on a sticky note regardless.
+  </div>
+  <div class="code"><pre><span class="c"># nano — simple, shows its shortcuts at the bottom. Recommended.</span>
+git config --global core.editor <span class="o">"nano"</span>
+
+<span class="c"># or VS Code — --wait is essential, without it git thinks you finished instantly</span>
+git config --global core.editor <span class="o">"code --wait"</span></pre></div>
+
+  <h3>4 · Settings that prevent specific problems</h3>
+  <div class="code"><pre>git config --global init.defaultBranch main   <span class="c"># GitHub expects 'main'</span>
+git config --global pull.rebase true          <span class="c"># linear history — it's a portfolio</span>
+git config --global push.default simple
+git config --global color.ui auto
+git config --global credential.helper osxkeychain</pre></div>
+
+  <h3>5 · SSH key — how your Mac proves it's you</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th></th><th>SSH key</th><th>HTTPS + token</th></tr></thead>
+      <tbody>
+        <tr><td>Setup</td><td>8 min, once</td><td>3 min</td></tr>
+        <tr><td>Daily use</td><td>silent</td><td>occasional re-prompt</td></tr>
+        <tr><td>Expiry</td><td>never</td><td>30–90 days, then it breaks and you've forgotten why</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Use SSH. Five extra minutes today avoids a confusing outage in October.</p>
+  <div class="code"><pre>ssh-keygen -t ed25519 -C <span class="o">"your@email.com"</span>
+<span class="c">#   file location  → Return (accept default)</span>
+<span class="c">#   passphrase     → type one, or Return twice for none</span>
+
+eval <span class="o">"$(ssh-agent -s)"</span>
+
+<span class="c"># UseKeychain is macOS-only — this exact config won't work on Linux</span>
+cat &gt;&gt; ~/.ssh/config &lt;&lt;<span class="o">'EOF'</span>
+
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+EOF
+
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+pbcopy &lt; ~/.ssh/id_ed25519.pub    <span class="c"># PUBLIC key → clipboard. Note the .pub</span></pre></div>
+  <p>
+    Then <strong>GitHub → avatar → Settings → SSH and GPG keys → New SSH key</strong>. Paste. Add.
+    Test with <code>ssh -T git@github.com</code>:
+  </p>
+  <div class="call good">
+    <b>"…but GitHub does not provide shell access" is SUCCESS</b>
+    It confuses everyone the first time. GitHub is saying <em>"I know who you are, but you can't
+    get a terminal here"</em> — which is correct and expected. If you see
+    <code>Hi &lt;username&gt;! You've successfully authenticated</code>, you're done.
+  </div>
+
+  <h3>6 · Create the GitHub repo — and leave it empty</h3>
+  <div class="call warn">
+    <b>Do NOT tick "Add a README", ".gitignore", or "license"</b>
+    You already have those files locally. If GitHub creates its own, the two histories share
+    no ancestor and your first push fails with
+    <code>fatal: refusing to merge unrelated histories</code> — a genuinely baffling error for
+    a first push. An empty repo avoids it entirely.
+  </div>
+
+  <h3>7 · Connect and push</h3>
+  <div class="code"><pre>cd ~/path/to/fde-trainer-bootcamp
+
+git remote add origin git@github.com:<span class="o">&lt;username&gt;</span>/fde-trainer-bootcamp.git
+git remote -v                 <span class="c"># should list origin twice</span>
+
+<span class="k">make</span> git-check                <span class="c"># is .env tracked? anything oversized?</span>
+git add -A
+git commit -m <span class="o">"Day 0: bootcamp scaffold and AWS lane"</span>
+git push -u origin main       <span class="c"># -u only on the FIRST push</span></pre></div>
+  <p class="note" style="margin-bottom:0">
+    Wrong URL? Fix it with <code>git remote set-url origin …</code> — don't add a second remote.
+  </p>
+</section>
+
+<!-- ─────────────────────────────────────────── daily -->
+<section id="daily">
+  <h2><span class="num">Part 2</span>The daily loop</h2>
+  <p class="note">This is 95% of what you will ever do. Four commands, or one.</p>
+
+  <div class="loop">
+    <h3>End of every lab day</h3>
+    <div class="code"><pre>git status                      <span class="c"># what changed. READ IT.</span>
+git add -A                      <span class="c"># stage everything</span>
+git commit -m <span class="o">"Day 07: agent loop from scratch, five failure modes"</span>
+git push</pre></div>
+    <p style="margin:0 0 10px">Or, which also lints and runs the tests first:</p>
+    <div class="code" style="margin:0"><pre><span class="k">make</span> ship M=<span class="o">"Day 07: agent loop from scratch, five failure modes"</span></pre></div>
+  </div>
+
+  <h3>Commit messages that are worth something</h3>
+  <p class="note">
+    Your history is a portfolio artifact — a hiring manager scrolling it sees four weeks of
+    daily work. If a message could apply to any day, it isn't doing its job.
+  </p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Bad</th><th>Good</th></tr></thead>
+      <tbody>
+        <tr><td><code>update</code></td><td>Day 07: agent loop from scratch, five failure modes</td></tr>
+        <tr><td><code>fixes</code></td><td>Day 08: fix synthesis bucket — query decomposition, 0.41 → 0.87</td></tr>
+        <tr><td><code>wip</code></td><td>Day 14: hybrid retrieval ablation on 200-doc corpus</td></tr>
+        <tr><td><code>stuff</code></td><td>Day 18: red-team report, 50 attacks, indirect injection confirmed</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="call">
+    <b>Commit daily, not weekly</b>
+    24 commits on 24 consecutive working days tells a story that one bulk upload does not.
+    The cadence <em>is</em> the evidence.
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── reading -->
+<section id="reading">
+  <h2><span class="num">Part 3</span>Reading what git tells you</h2>
+
+  <h3><code>git status</code> — three sections, three states</h3>
+  <div class="code"><pre>On branch main
+Your branch is ahead of 'origin/main' by 2 commits.   <span class="c">← 2 unpushed commits</span>
+
+Changes not staged for commit:                        <span class="c">← edited, NOT staged</span>
+        modified:   labs/DAY_07.md
+
+Untracked files:                                      <span class="c">← new, git has never seen these</span>
+        labs/day07/agent.py</pre></div>
+  <p class="note">
+    <strong>Staged</strong> (going in the next commit), <strong>not staged</strong> (edited but
+    not going in), <strong>untracked</strong> (brand new). <code>git add -A</code> moves the
+    bottom two into the first.
+  </p>
+
+  <h3>After a commit, and after a push</h3>
+  <div class="code"><pre>[main 3f2a1b8] Day 07: agent loop from scratch
+ 4 files changed, 312 insertions(+), 8 deletions(-)
+<span class="c">        ↑ the permanent ID. You can always get back to this exact state.</span>
+
+To github.com:siva/fde-trainer-bootcamp.git
+   9c1d4e2..3f2a1b8  main -&gt; main
+<span class="c">   ↑ two hashes and an arrow means it worked.</span></pre></div>
+
+  <h3>Looking around</h3>
+  <div class="code"><pre>git log --oneline -10      <span class="c"># recent commits          (q to quit)</span>
+git log --oneline --graph  <span class="c"># with branch structure</span>
+git diff                   <span class="c"># unstaged — what you've edited</span>
+git diff --staged          <span class="c"># staged — what you're about to commit</span>
+git show HEAD              <span class="c"># your last commit, in full</span></pre></div>
+  <div class="call">
+    <b>Stuck in a screenful of text you can't escape?</b>
+    <code>git log</code> and <code>git diff</code> open a pager. Scroll with arrows or space.
+    Press <code>q</code> to quit.
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── panic -->
+<section id="panic">
+  <h2><span class="num">Part 4</span>When it breaks</h2>
+  <p class="note">
+    The section you'll actually come back to. Nothing here is dangerous if you follow it as
+    written. Search for whatever git just said to you.
+  </p>
+
+  <div class="search">
+    <input id="q" type="search" placeholder="Search — try: vim · rejected · .env · undo · large · conflict"
+           aria-label="Search the panic section">
+    <span class="hint" id="qc"></span>
+  </div>
+
+  <div class="panic" id="panic"></div>
+  <div class="noresult" id="nores" hidden>
+    Nothing matches that. Try <code>undo</code>, <code>push</code>, <code>vim</code>,
+    <code>key</code>, or <code>lost</code>.
+  </div>
+
+  <div class="call good" style="margin-top:22px">
+    <b>The universal escape hatch</b>
+    Almost nothing in git is permanently lost. <code>git reflog</code> lists every state your
+    repo has been in, with hashes you can return to. And if you've truly tangled something: your
+    files are on GitHub, so cloning fresh into a new folder and copying your uncommitted work
+    across always works. Inelegant, reliable, no shame in it.
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── cheat sheet -->
+<section id="sheet">
+  <h2><span class="num">Part 5</span>Cheat sheet</h2>
+  <p class="note">Keep this in a tab.</p>
+
+  <div class="sheet">
+    <div>
+      <h3>Daily</h3>
+      <div class="code"><pre>git status                    <span class="c"># what changed</span>
+git add -A                    <span class="c"># stage everything</span>
+git commit -m <span class="o">"Day NN: what"</span>
+git push                      <span class="c"># publish</span>
+
+<span class="k">make</span> ship M=<span class="o">"Day NN: what"</span>    <span class="c"># all four + lint + tests</span></pre></div>
+
+      <h3>Looking around</h3>
+      <div class="code"><pre>git log --oneline -10         <span class="c"># q to quit</span>
+git diff                      <span class="c"># unstaged changes</span>
+git diff --staged             <span class="c"># what you're committing</span>
+git show HEAD                 <span class="c"># last commit in full</span></pre></div>
+    </div>
+
+    <div>
+      <h3>Undo</h3>
+      <div class="code"><pre>git restore &lt;file&gt;            <span class="c"># discard edits ← DESTRUCTIVE</span>
+git restore --staged &lt;file&gt;   <span class="c"># unstage, keep edits</span>
+git reset --soft HEAD~1       <span class="c"># undo last commit (if unpushed)</span>
+git stash / git stash pop     <span class="c"># shelve work / bring it back</span></pre></div>
+
+      <h3>When stuck</h3>
+      <div class="code"><pre>q                             <span class="c"># quit a pager</span>
+Esc :wq                       <span class="c"># quit vim, saving</span>
+git pull                      <span class="c"># push rejected? pull first</span>
+git reflog                    <span class="c"># every state you've been in</span>
+git rebase --abort            <span class="c"># back out of a messy pull</span></pre></div>
+
+      <h3>Setup, once</h3>
+      <div class="code"><pre>git remote -v                 <span class="c"># where does this push to</span>
+git config --global --list    <span class="c"># what have I configured</span>
+ssh -T git@github.com         <span class="c"># is my SSH key working</span></pre></div>
+    </div>
+  </div>
+
+  <div class="call" style="margin-top:24px">
+    <b>The one habit worth building now</b>
+    Run <code>git status</code> before every <code>git add -A</code>, and actually read it.
+    Three seconds. It's how you catch the <code>.env</code> you forgot, the 400 MB file you
+    didn't mean to include, and the twelve <code>__pycache__</code> directories. Every
+    experienced engineer does this reflexively — it's the highest-return git habit there is.
+  </div>
+</section>
+
+<footer>
+  <b>Companion to:</b> FDE Trainer Bootcamp · full text in <code>GIT_GUIDE.md</code> · script at <code>scripts/git_setup.sh</code><br>
+  <b>Setup:</b> make git-setup → make git-check → git add -A → git commit -m "…" → git push -u origin main<br>
+  <b>Daily:</b> make ship M="Day NN: what you did"<br>
+  <b>Platform:</b> macOS · Homebrew · zsh · SSH with Keychain
+</footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var PANIC = [
+    { q: "I'm stuck in vim and can't get out",
+      k: "vim editor escape quit commit message stuck",
+      a: '<p><code>Esc</code>, then type <code>:wq</code> and press Return — write and quit. ' +
+         'Or <code>:q!</code> to quit without saving.</p>' +
+         '<p>Then go set your editor so it never happens again:</p>' +
+         '<div class="code"><pre>git config --global core.editor "nano"</pre></div>' },
+
+    { q: "I want to undo my last commit but keep my changes",
+      k: "undo revert last commit reset soft mistake wrong message",
+      a: '<div class="code"><pre>git reset --soft HEAD~1</pre></div>' +
+         '<p>The commit disappears; your edits stay staged. Fix, re-commit.</p>' +
+         '<p><strong>Only if you haven\'t pushed.</strong> Rewriting history that\'s already on ' +
+         'GitHub causes problems for anyone who pulled it. On a solo repo it\'s recoverable, ' +
+         'but avoid the habit.</p>' },
+
+    { q: "I want to throw away my changes to one file",
+      k: "discard changes restore checkout revert file undo edits",
+      a: '<div class="code"><pre>git restore labs/DAY_07.md            <span class="c"># discard edits ← DESTRUCTIVE</span>\n' +
+         'git restore --staged labs/DAY_07.md   <span class="c"># unstage but KEEP the edits</span></pre></div>' +
+         '<p><code>git restore</code> without <code>--staged</code> permanently discards ' +
+         'uncommitted work. Be sure.</p>' },
+
+    { q: "Push rejected — “non-fast-forward” or “updates were rejected”",
+      k: "push rejected non-fast-forward fetch first failed refs pull error",
+      a: '<div class="code"><pre>! [rejected]        main -&gt; main (fetch first)\n' +
+         'error: failed to push some refs</pre></div>' +
+         '<p>GitHub has commits you don\'t — usually because you edited a file in the web UI. ' +
+         'Pull first:</p>' +
+         '<div class="code"><pre>git pull      <span class="c"># pull.rebase=true replays your work on top</span>\n' +
+         'git push</pre></div>' },
+
+    { q: "I accidentally committed .env",
+      k: "env secret key leak api credentials committed remove rotate security",
+      a: '<div class="call warn"><b>Rotate the key first. Right now.</b>' +
+         'Removing it from git does <em>not</em> un-leak it — bots scrape GitHub for committed ' +
+         'keys within minutes. Go revoke it at OpenAI / Anthropic / AWS, then clean up.</div>' +
+         '<div class="code"><pre><span class="c"># 1. ROTATE THE KEY (above). Not optional.</span>\n\n' +
+         '<span class="c"># 2. Untrack it, keeping the local file</span>\n' +
+         'git rm --cached .env\n' +
+         'git commit -m "remove .env from tracking"\n' +
+         'git push\n\n' +
+         '<span class="c"># 3. Confirm .gitignore covers it</span>\n' +
+         'grep \'^\\.env$\' .gitignore</pre></div>' +
+         '<p>This is exactly the drill you\'d walk a client through. Having done it once ' +
+         'yourself makes that conversation calm instead of alarming.</p>' },
+
+    { q: "It says my file is too large",
+      k: "large file size limit 100mb 50mb recording mov video reject",
+      a: '<p>GitHub warns above 50 MB and refuses above 100 MB. In this repo that\'s a screen ' +
+         'recording — already in <code>.gitignore</code>, but if one slipped in:</p>' +
+         '<div class="code"><pre>git rm --cached teaching/recordings/day_06.mov\n' +
+         'git commit -m "remove recording from tracking"</pre></div>' +
+         '<p>Keep recordings local. Upload the good ones to YouTube unlisted and link them from ' +
+         '<code>teaching/README.md</code> — better for your portfolio anyway, since a hiring ' +
+         'manager will click a link and won\'t download a <code>.mov</code>.</p>' },
+
+    { q: "Merge conflict",
+      k: "merge conflict rebase markers HEAD both modified resolve",
+      a: '<p>Rare on a solo repo, but happens if you edit both on GitHub\'s web UI and locally. ' +
+         'Git marks the file:</p>' +
+         '<div class="code"><pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nyour local version\n=======\nthe version from GitHub\n' +
+         '&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</pre></div>' +
+         '<p>Open it, delete the three marker lines, keep the text you want, then:</p>' +
+         '<div class="code"><pre>git add &lt;the-file&gt;\ngit rebase --continue</pre></div>' +
+         '<p>Want out entirely? <code>git rebase --abort</code> returns you to before the pull.</p>' },
+
+    { q: "“refusing to merge unrelated histories” on my first push",
+      k: "unrelated histories first push readme initialized github created license gitignore",
+      a: '<p>You ticked "Add a README" (or .gitignore, or a license) when creating the GitHub ' +
+         'repo, so it has a commit yours knows nothing about.</p>' +
+         '<p>Cleanest fix, since the GitHub-side files are throwaway — delete the repo on ' +
+         'GitHub, recreate it <strong>empty</strong>, and push again.</p>' +
+         '<p>Or force the merge if you\'d rather not recreate it:</p>' +
+         '<div class="code"><pre>git pull origin main --allow-unrelated-histories\n' +
+         '<span class="c"># resolve any conflicts, then</span>\ngit push</pre></div>' },
+
+    { q: "I'm on a weird branch, or “detached HEAD”",
+      k: "detached head branch checkout lost wrong branch stash",
+      a: '<div class="code"><pre>git checkout main</pre></div>' +
+         '<p>If it complains about uncommitted changes, either commit them or shelve them:</p>' +
+         '<div class="code"><pre>git stash\ngit checkout main\ngit stash pop     <span class="c"># bring the changes back</span></pre></div>' },
+
+    { q: "Permission denied (publickey)",
+      k: "permission denied publickey ssh key auth 403 authenticate github failed",
+      a: '<p>GitHub doesn\'t recognise your SSH key. Check in order:</p>' +
+         '<div class="code"><pre>ssh -T git@github.com                <span class="c"># what does it actually say?</span>\n' +
+         'ssh-add -l                           <span class="c"># is the key loaded in the agent?</span>\n' +
+         'ssh-add --apple-use-keychain ~/.ssh/id_ed25519\n' +
+         'git remote -v                        <span class="c"># SSH url (git@…) or HTTPS (https://…)?</span></pre></div>' +
+         '<p>A common cause: the remote is an HTTPS URL, so SSH keys never get used. Switch it:</p>' +
+         '<div class="code"><pre>git remote set-url origin git@github.com:&lt;username&gt;/fde-trainer-bootcamp.git</pre></div>' +
+         '<p>Otherwise confirm the public key is listed at <code>github.com/settings/keys</code>.</p>' },
+
+    { q: "I think I lost work",
+      k: "lost work recover reflog gone deleted commits missing panic",
+      a: '<p>Almost certainly not. Git keeps every state your repo has been in:</p>' +
+         '<div class="code"><pre>git reflog             <span class="c"># every state, with hashes</span>\n' +
+         'git checkout &lt;hash&gt;    <span class="c"># go look at one</span></pre></div>' +
+         '<p>Find the hash from just before things went wrong, check it out, and copy what you ' +
+         'need. If the work was never committed, <code>git stash list</code> is worth checking too.</p>' },
+
+    { q: "My commits show a grey avatar, not my GitHub profile",
+      k: "avatar grey profile email mismatch attribution contributions not showing",
+      a: '<p>Your commit email doesn\'t match any email on your GitHub account.</p>' +
+         '<div class="code"><pre>git config --global user.email        <span class="c"># what git is using</span></pre></div>' +
+         '<p>Either add that address at <strong>GitHub → Settings → Emails</strong>, or change ' +
+         'git to use one already on the account. Future commits will attribute correctly; past ' +
+         'ones stay as they are, which is fine.</p>' }
+  ];
+
+  // ── render ────────────────────────────────────────────────
+  var host = document.getElementById("panic");
+  host.innerHTML = PANIC.map(function (p, i) {
+    return '<div class="p-item" data-k="' + (p.q + " " + p.k).toLowerCase().replace(/"/g, "") + '">' +
+             '<button class="p-q" aria-expanded="false" aria-controls="pa' + i + '">' +
+               '<span class="mark" aria-hidden="true"></span>' + p.q +
+             '</button>' +
+             '<div class="p-a" id="pa' + i + '" hidden>' + p.a + '</div>' +
+           '</div>';
+  }).join("");
+
+  host.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest(".p-q");
+    if (!btn) return;
+    var item = btn.parentNode;
+    var body = item.querySelector(".p-a");
+    var open = item.classList.toggle("open");
+    body.hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+    if (open) addCopy(body);
+  });
+
+  // ── search ────────────────────────────────────────────────
+  var input = document.getElementById("q");
+  var count = document.getElementById("qc");
+  var nores = document.getElementById("nores");
+
+  function filter() {
+    var term = input.value.trim().toLowerCase();
+    var shown = 0;
+    Array.prototype.forEach.call(host.children, function (el) {
+      var hit = !term || el.getAttribute("data-k").indexOf(term) !== -1;
+      el.hidden = !hit;
+      if (hit) shown++;
+      // auto-open a single match — you searched for it, you want the answer
+      if (term && hit && shown === 1) {
+        var b = el.querySelector(".p-a");
+        if (b.hidden) { el.classList.add("open"); b.hidden = false;
+          el.querySelector(".p-q").setAttribute("aria-expanded", "true"); addCopy(b); }
+      }
+    });
+    nores.hidden = shown !== 0;
+    count.textContent = term ? shown + " of " + PANIC.length : PANIC.length + " fixes";
+  }
+  input.addEventListener("input", filter);
+  filter();
+
+  // ── copy buttons ──────────────────────────────────────────
+  function addCopy(scope) {
+    var blocks = (scope || document).querySelectorAll(".code");
+    Array.prototype.forEach.call(blocks, function (blk) {
+      if (blk.querySelector(".copy")) return;
+      var b = document.createElement("button");
+      b.className = "copy";
+      b.type = "button";
+      b.textContent = "copy";
+      b.addEventListener("click", function () {
+        // Strip comments so what lands on the clipboard is runnable.
+        var pre = blk.querySelector("pre").cloneNode(true);
+        Array.prototype.forEach.call(pre.querySelectorAll(".c"), function (c) { c.remove(); });
+        var txt = pre.textContent.split("\n").map(function (l) { return l.replace(/\s+$/, ""); })
+                    .filter(function (l, i, a) { return l !== "" || (i > 0 && a[i - 1] !== ""); })
+                    .join("\n").trim();
+        try {
+          navigator.clipboard.writeText(txt).then(function () {
+            b.textContent = "copied"; b.classList.add("done");
+            setTimeout(function () { b.textContent = "copy"; b.classList.remove("done"); }, 1400);
+          });
+        } catch (err) {
+          b.textContent = "select it";
+          setTimeout(function () { b.textContent = "copy"; }, 1400);
+        }
+      });
+      blk.appendChild(b);
+    });
+  }
+  addCopy(document);
+})();
+</script>

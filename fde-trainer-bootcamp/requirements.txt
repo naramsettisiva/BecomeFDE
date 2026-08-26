@@ -1,0 +1,71 @@
+# ---- core ----------------------------------------------------------------
+python-dotenv>=1.0
+pydantic>=2.7
+pydantic-settings>=2.3
+httpx>=0.27
+rich>=13.7
+typer>=0.12
+tenacity>=8.3
+
+# ---- model clients -------------------------------------------------------
+openai>=1.40            # also speaks to Ollama via base_url
+anthropic>=0.34
+ollama>=0.3
+
+# ---- aws lane ------------------------------------------------------------
+boto3>=1.35
+botocore>=1.35
+aws-lambda-powertools>=2.43   # structured logging + tracing in Lambda (Day 15-16)
+
+
+# ---- numerical / data ----------------------------------------------------
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.5
+matplotlib>=3.9
+
+# ---- retrieval -----------------------------------------------------------
+qdrant-client>=1.10
+chromadb>=0.5
+rank-bm25>=0.2.2
+sentence-transformers>=3.0
+tiktoken>=0.7
+pypdf>=4.3
+beautifulsoup4>=4.12
+markdownify>=0.13
+
+# ---- orchestration -------------------------------------------------------
+langchain>=0.3
+langchain-community>=0.3
+langchain-openai>=0.2
+langchain-ollama>=0.2
+langgraph>=0.2
+langsmith>=0.1
+llama-index>=0.11
+
+# ---- evals ---------------------------------------------------------------
+ragas>=0.1.13
+datasets>=2.20
+deepeval>=1.0
+
+# ---- serving / UI --------------------------------------------------------
+fastapi>=0.112
+uvicorn[standard]>=0.30
+sse-starlette>=2.1
+streamlit>=1.37
+chainlit>=1.1
+gradio>=4.41
+
+# ---- observability -------------------------------------------------------
+arize-phoenix>=4.20
+opentelemetry-sdk>=1.26
+
+# ---- protocol ------------------------------------------------------------
+mcp>=1.0
+
+# ---- dev -----------------------------------------------------------------
+pytest>=8.3
+pytest-asyncio>=0.23
+ruff>=0.5
+ipykernel>=6.29
+jupyterlab>=4.2

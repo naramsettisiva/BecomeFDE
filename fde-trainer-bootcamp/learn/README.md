@@ -1,0 +1,107 @@
+# The learn modules
+
+**One per day, read before the lab. `learn/DAY_01_LEARN.md` … `DAY_24_LEARN.md`.**
+
+---
+
+## Why these exist
+
+The labs teach by doing. That works — but only once you have something to do it *with*.
+Handing you a terminal and saying "notice what happens" is discovery learning, and discovery
+learning is excellent for consolidating an idea and terrible for introducing one. You end up
+inferring a mental model from a handful of outputs, and inferred models have holes you can't
+see until a student asks about one.
+
+So each day now has two halves:
+
+**Learn** — actual instruction. What the thing is, how it works underneath, why it was built
+that way, where it breaks, and what people get wrong about it. You read it, work the examples
+on paper, and take a self-check before you touch the keyboard.
+
+**Lab** — the hands-on. Now you're building something you understand rather than pattern-
+matching a tutorial.
+
+The order matters, and it matters *twice*. You learn faster, and — more importantly for where
+you're going — **you can only teach the part you were taught.** A trainer who learned entirely
+by doing can demonstrate. A trainer who understands the mechanism can answer the question
+nobody prepared them for, which is the whole job.
+
+---
+
+## The daily shape (still 5 hours)
+
+Nothing was added to your day. The concept block grew and the lab tightened.
+
+| Block | Time | What |
+|---|---|---|
+| **0 · Warm-up** | 0:20 | Spaced-repetition recall from previous days. Closed book. |
+| **1 · Learn** | 1:15 | The teaching module. Read, work the examples, take the self-check. |
+| **2 · Lab** | 2:20 | Build it. |
+| **3 · Teach-back** | 0:40 | Record yourself explaining it. Now includes a mechanism question. |
+| **4 · Ship** | 0:25 | Commit, log, retro. |
+
+Week 4 shifts: Days 20–21 are capstone build days where the learn block shrinks to 0:30, and
+Days 22–24 invert entirely — the craft days are mostly instruction and delivery.
+
+**If the learn block routinely runs over 1:15, tell me.** That means the module is pitched
+wrong for you and I'll adjust the remaining ones. Don't just absorb the overrun — a course
+that quietly becomes six hours a day is a course you stop doing in week three.
+
+---
+
+## What's in a module
+
+Every one has the same seven parts, so you always know where you are:
+
+1. **Where this sits** — one paragraph connecting today to what you already built, and naming
+   the specific problem today solves. Never "today we'll cover X."
+2. **The mechanism** — the actual explanation. How the thing works, built up from parts you
+   already understand. This is the bulk.
+3. **Worked example** — real numbers, done by hand, before any code runs. Usually from the
+   freight corpus so it stays concrete.
+4. **What people get wrong** — the misconceptions, stated as the wrong belief and then
+   corrected. Naming a misconception before you form it is worth more than correcting it after.
+5. **The trainer's angle** — how you'd explain this to a room, the analogy that lands, the
+   demo that makes it click, and the question a sharp student will ask that you should have an
+   answer ready for.
+6. **Self-check** — 6–10 questions with answers folded below. If you can't answer them, re-read
+   before the lab. The lab assumes the module.
+7. **Going deeper** — the papers and docs worth reading if a topic grabs you. Optional, and
+   marked as such.
+
+---
+
+## How to actually use these
+
+**Read with a pen.** Not metaphorically. The worked examples are meant to be done on paper
+first — the arithmetic is small on purpose. Deriving the cosine/Euclidean relationship yourself
+takes four lines and permanently fixes a confusion that reading about it does not.
+
+**Take the self-check honestly.** Cover the answers. Getting one wrong now is free; getting it
+wrong in front of a room in November is not. Anything you miss goes on a flashcard and into the
+next morning's warm-up.
+
+**Log the confusions here too, not just in the lab.** Your `LEARNING_LOG.md` is the source
+material for the curriculum you build on Day 22. Confusions from the *learn* half are the most
+valuable entries in it, because they're the ones your future students will hit at exactly the
+same point — while being taught, before they have hands on anything to disambiguate with.
+
+**Don't skip ahead to the lab because you're impatient.** You will be, around Day 8. The
+labs are more fun. But the days where you skip the module are the days you build something
+that works and can't explain, and those are the exact topics that will fail you in a Q&A.
+
+---
+
+## A note on how these are written
+
+They assume you are an experienced engineer who is new to this specific stack. So they lean on
+distributed systems, platform infrastructure, and operations for analogies — because you have
+23 years of intuition there and it's faster to attach a new idea to an existing one than to
+build it from nothing.
+
+They do **not** assume you remember linear algebra, or that you've read the papers, or that you
+know what a transformer does internally. Where that background is needed, it's taught.
+
+Where I'm uncertain or where the field genuinely disagrees, the module says so rather than
+presenting one view as settled. You're going to teach this material — inheriting my
+overconfidence would be worse than inheriting a gap you know about.

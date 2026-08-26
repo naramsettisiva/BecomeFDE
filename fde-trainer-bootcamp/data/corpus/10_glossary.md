@@ -1,0 +1,21 @@
+# Freight Operations Glossary
+
+- **BOL** — Bill of Lading. Legal document of carriage and title.
+- **Deadhead** — Empty miles driven to reach a pickup.
+- **Drayage** — Short-haul move between port/ramp and warehouse.
+- **EDI 204** — Load tender transaction set.
+- **EDI 214** — Shipment status message.
+- **EDI 210** — Freight invoice.
+- **ELD** — Electronic Logging Device; source of truth for hours and geofence.
+- **FTL / LTL** — Full / Less-than truckload.
+- **HOS** — Hours of Service. Federal driver duty-time limits.
+- **Linehaul** — Base transport charge, excluding fuel and accessorials.
+- **MTA** — Master Transportation Agreement.
+- **OTIF** — On-Time In-Full.
+- **POD** — Proof of Delivery.
+- **Routing guide** — Ordered list of carriers per lane.
+- **Spot** — Transactional, non-contracted capacity purchase.
+- **TONU** — Truck Order Not Used.
+- **TAR / FTA** — Tender Acceptance Rate / First Tender Acceptance.
+- **TMS** — Transportation Management System.
+- **Yard jockey** — Vehicle that repositions trailers within a facility.
