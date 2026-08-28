@@ -1,6 +1,6 @@
 # Day 23 — Deliver It Live: Teaching Under Real Conditions
 
-**Sat Sep 19, 2026** · Week 4 · Maps to: **the trainer role** · Backend: n/a · Est. cost: **$0–1**
+**Mon Sep 28, 2026** · Week 4 · Maps to: **the trainer role** · Backend: n/a · Est. cost: **$0–1**
 
 > **Before you start — read `learn/DAY_23_LEARN.md` (0:30).**
 > Pre-flight, recovering live, the five question types, facilitation. The lab below assumes it and does not re-explain it.

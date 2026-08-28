@@ -1,6 +1,6 @@
 # Day 08 — Agentic RAG: Routing, Decomposition, and Self-Correction
 
-**Wed Sep 2, 2026** · Week 2 · Maps to: **Module 02 — Agentic RAG** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
+**Mon Sep 7, 2026** · Week 2 · Maps to: **Module 02 — Agentic RAG** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
 
 > **Before you start — read `learn/DAY_08_LEARN.md` (1:15).**
 > The four agentic-RAG patterns and what each costs. The lab below assumes it and does not re-explain it.
@@ -46,6 +46,14 @@ rather than a buzzword.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Write the agent loop from memory. Five steps.
 2. What does the OpenAI wire format do with `arguments` that Anthropic doesn't?

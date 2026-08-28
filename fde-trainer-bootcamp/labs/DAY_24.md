@@ -1,6 +1,6 @@
 # Day 24 — Demo Day, Portfolio, and the 90-Day Launch
 
-**Mon Sep 21, 2026** · Week 4 · Backend: n/a · Est. cost: **$0–1**
+**Tue Sep 29, 2026** · Week 4 · Backend: n/a · Est. cost: **$0–1**
 
 > **Before you start — read `learn/DAY_24_LEARN.md` (0:30).**
 > Demo structure, the three portfolio surfaces, sustaining habits. The lab below assumes it and does not re-explain it.
@@ -46,6 +46,14 @@ This is the last day I set the agenda. From tomorrow, the plan is yours to run.
 ---
 
 ## Block 0 — Full-course recall (0:20)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 Closed book, 25 questions spanning all 24 days. Write them yourself from your flashcard
 misses, then answer them. Anything still wrong after 24 days is a genuine gap — write it at

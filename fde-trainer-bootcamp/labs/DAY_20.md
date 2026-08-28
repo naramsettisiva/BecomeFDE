@@ -1,6 +1,6 @@
 # Day 20 — Capstone Build, Day 1: Skeleton to Working
 
-**Wed Sep 16, 2026** · Week 4 · Maps to: **Module 07 — End-to-End Systems** · Backend: **all** · Est. cost: **$5–10**
+**Wed Sep 23, 2026** · Week 4 · Maps to: **Module 07 — End-to-End Systems** · Backend: **all** · Est. cost: **$5–10**
 
 > **Before you start — read `learn/DAY_20_LEARN.md` (0:30).**
 > Vertical slice, scope control, evaluating a document. The lab below assumes it and does not re-explain it.

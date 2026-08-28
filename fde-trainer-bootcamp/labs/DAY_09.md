@@ -1,6 +1,6 @@
 # Day 09 — Multi-Agent Systems: Supervisors, Handoffs, and Deep Research
 
-**Thu Sep 3, 2026** · Week 2 · Maps to: **Module 03 — Multi-Agent Systems** · Backend: **local** + `[PAID]` · Est. cost: **$3–6**
+**Tue Sep 8, 2026** · Week 2 · Maps to: **Module 03 — Multi-Agent Systems** · Backend: **local** + `[PAID]` · Est. cost: **$3–6**
 
 > **Before you start — read `learn/DAY_09_LEARN.md` (1:15).**
 > Three topologies, three failure modes, handoff design. The lab below assumes it and does not re-explain it.
@@ -44,6 +44,14 @@ the multi-agent version, build the single-agent version, and show the numbers.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Four agentic-RAG patterns and the bucket each one fixes.
 2. Your bake-off: best quality-per-dollar strategy? Show the arithmetic.

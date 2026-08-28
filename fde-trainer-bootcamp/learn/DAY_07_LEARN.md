@@ -478,19 +478,35 @@ sections, and it will not re-explain either.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *ReAct: Synergizing Reasoning and Acting in Language Models* — Yao et al., 2022 (ICLR 2023).
-  §2 and Figure 1. The prompt format is obsolete; the loop isn't.
-- *Building Effective Agents* — Schluntz & Zhang, Anthropic engineering blog, 2024. The clearest
-  published statement of workflow-vs-agent, and it argues §2.8 harder than I do.
+<!--reading:07-->
+
+### If you read one thing this week
+
+**[Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents)** — Erik Schluntz & Barry Zhang (Anthropic engineering blog, 2024) · essay · ~35 min
+
+The clearest published statement of workflow-versus-agent, and it argues §2.8 harder than the module does — the seven named patterns are the vocabulary you will use in every client scoping conversation from here on.
+
+### Then, in the order I'd take them
+
+- **[Tool use with Claude — overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)** — Anthropic · docs · ~30 min  
+  §2.1 and §2.2 in primary-source form — `stop_reason: "tool_use"`, the `tool_use` block, and the `tool_result` block you send back — which is the exact round trip your loop has to implement, and reading it before you write the loop saves an hour of guessing.
+- **[ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)** — Yao, Zhao, Yu, Du, Shafran, Narasimhan & Cao (ICLR 2023) · paper · ~35 min  
+  Read §2 and Figure 1 and stop — the Thought/Action/Observation prompt format is obsolete now that tool calling is native, but the loop it describes is the one running inside every agent framework you will be handed.
+- **[Amazon Bedrock — client-side tool use](https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use-client-side.html)** — AWS documentation · docs · ~25 min  
+  The `toolConfig` / `toolSpec` / `inputSchema.json` shape is the third wire format from §2.3 and it is the one your AWS clients will hand you — read it next to the Anthropic page above and the normalisation your registry needs becomes obvious.
+- **[τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)** — Shunyu Yao, Noah Shinn, Pedram Razavi & Karthik Narasimhan (2024) · paper · ~35 min  
+  Multi-turn tool use with a rule-following requirement, and the pass^k consistency numbers are the antidote to single-shot benchmark optimism — useful the first time a client asks why the agent that worked in the demo is flaky in production.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - *Toolformer: Language Models Can Teach Themselves to Use Tools* — Schick et al., 2023. How tool
   use got into the post-training data in the first place.
 - *Gorilla: Large Language Model Connected with Massive APIs* — Patil et al., 2023, and the
   Berkeley Function-Calling Leaderboard it produced. Read skeptically: benchmark tools aren't yours.
-- *τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains* — Yao et al., 2024.
-  Multi-turn with a rule-following requirement; the pass^k numbers are a good antidote to
-  single-shot benchmark optimism.
 - Bedrock **Converse API** docs, the `toolConfig` section. Twenty minutes, and it's the format your
   AWS clients hand you.
 

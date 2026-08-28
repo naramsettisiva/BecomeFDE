@@ -1,6 +1,6 @@
 # Day 16 — Observability: Tracing, Metrics, and the Feedback Loop
 
-**Fri Sep 11, 2026** · Week 3 · Maps to: **Module 08 — Production I** · Backend: **local** + `[PAID]` · Est. cost: **$1–3**
+**Thu Sep 17, 2026** · Week 3 · Maps to: **Module 08 — Production I** · Backend: **local** + `[PAID]` · Est. cost: **$1–3**
 
 > **Before you start — read `learn/DAY_16_LEARN.md` (1:15).**
 > What an LLM trace must capture, and the feedback loop. The lab below assumes it and does not re-explain it.
@@ -43,6 +43,14 @@ differentiating.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Your three cache hit rates and the cost per query at each layer.
 2. What did prompt prefix reordering save, and why did it save it?

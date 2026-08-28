@@ -1,0 +1,378 @@
+{
+  "1": [
+    {
+      "title": "Transformers, the tech behind LLMs (Deep Learning, Chapter 5)",
+      "author": "Grant Sanderson (3Blue1Brown), text adaptation by Justin Sun",
+      "url": "https://www.3blue1brown.com/lessons/gpt",
+      "type": "video",
+      "minutes": 30,
+      "why": "Gives you the picture behind §2.1 and §2.2 in one sitting — next-token distribution, softmax, and temperature as a knob on that softmax — without assuming any ML background, and the page carries the same content as text if you would rather read it.",
+      "pick": true
+    },
+    {
+      "title": "Tiktokenizer — interactive tokeniser playground",
+      "author": "dqbd",
+      "url": "https://tiktokenizer.vercel.app/",
+      "type": "interactive",
+      "minutes": 15,
+      "why": "Paste your own domain strings (invoice numbers, SKUs, '$65 per hour', a JSON blob) and watch the token boundaries — fifteen minutes here makes §2.3's token arithmetic concrete in a way no article does.",
+      "pick": false
+    },
+    {
+      "title": "How to generate text: using different decoding methods for language generation with Transformers",
+      "author": "Patrick von Platen (Hugging Face)",
+      "url": "https://huggingface.co/blog/how-to-generate",
+      "type": "blog",
+      "minutes": 25,
+      "why": "The sampler is the part of §2.2 that people hand-wave; this walks greedy, beam, temperature, top-k and top-p with worked distributions, so you can explain why temperature=0 is not actually determinism.",
+      "pick": false
+    },
+    {
+      "title": "Messages API reference",
+      "author": "Anthropic",
+      "url": "https://platform.claude.com/docs/en/api/messages",
+      "type": "docs",
+      "minutes": 20,
+      "why": "This is §2.6 in primary-source form: read the `stop_reason` enum (`max_tokens` vs `end_turn` vs `refusal`) and the `usage` object, because those two fields are the only signal you get for the failure mode with no error.",
+      "pick": false
+    },
+    {
+      "title": "Attention Is All You Need",
+      "author": "Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser & Polosukhin (2017)",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "type": "paper",
+      "minutes": 45,
+      "why": "Read Figure 1 and §3.1–3.2 only and skip the training and results sections — you want the shape of the architecture so 'context window' and 'quadratic attention cost' stop being magic words when a client asks.",
+      "pick": false
+    }
+  ],
+  "2": [
+    {
+      "title": "Structured outputs (JSON outputs and strict tool use)",
+      "author": "Anthropic",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "type": "docs",
+      "minutes": 25,
+      "why": "This is Level 3 of §2.2 as an actual product surface — read the schema-complexity limits and the grammar-compilation caching notes, because those constraints are exactly what decide whether Level 3 is available to you or you fall back to Level 2 with a repair loop.",
+      "pick": true
+    },
+    {
+      "title": "Efficient Guided Generation for Large Language Models",
+      "author": "Brandon T. Willard & Rémi Louf (2023)",
+      "url": "https://arxiv.org/abs/2307.09702",
+      "type": "paper",
+      "minutes": 40,
+      "why": "The finite-state-machine construction under constrained decoding, and the section you want is §3 — it makes clear that the constraint masks logits rather than checking output, which is the distinction §2.3 hangs on.",
+      "pick": false
+    },
+    {
+      "title": "Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models",
+      "author": "Tam, Wu, Tsai, Lin, Lee & Chen (2024)",
+      "url": "https://arxiv.org/abs/2408.02442",
+      "type": "paper",
+      "minutes": 30,
+      "why": "The contested claim that forcing JSON costs you reasoning quality — read the tables, then note the methodology critiques, because a trainer who can describe a disputed result honestly is worth more than one who asserts it.",
+      "pick": false
+    },
+    {
+      "title": "Pydantic — JSON Schema",
+      "author": "Pydantic documentation",
+      "url": "https://pydantic.dev/docs/validation/latest/concepts/json_schema/",
+      "type": "docs",
+      "minutes": 20,
+      "why": "`model_json_schema()` output is literally what you paste into the prompt at Level 2, so read how `Field` descriptions and constraints serialise — that serialisation is why §2.4's claim that field order is an instruction actually holds.",
+      "pick": false
+    },
+    {
+      "title": "Exponential Backoff And Jitter",
+      "author": "Marc Brooker (AWS Architecture Blog, 2015)",
+      "url": "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/",
+      "type": "blog",
+      "minutes": 15,
+      "why": "You have seen this before, but it is the canonical citation for §2.7 and the simulation graphs are the fastest way to win the 'why full jitter, not plain exponential' argument in a client's codebase.",
+      "pick": false
+    }
+  ],
+  "3": [
+    {
+      "title": "Embeddings: What they are and why they matter",
+      "author": "Simon Willison (PyBay 2023)",
+      "url": "https://simonwillison.net/2023/Oct/23/embeddings/",
+      "type": "video",
+      "minutes": 40,
+      "why": "The best non-ML-background first encounter with §2.1 and §2.2 — what a vector is, what a dimension is not, and a live demo of related-content search; the article stands alone if you skip the 38-minute embedded video.",
+      "pick": true
+    },
+    {
+      "title": "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs",
+      "author": "Yu. A. Malkov & D. A. Yashunin (2016, rev. 2018)",
+      "url": "https://arxiv.org/abs/1603.09320",
+      "type": "paper",
+      "minutes": 50,
+      "why": "Read §3 and the figures only — the skip-list intuition is right there, and as a distributed-systems engineer you will recognise the recall/latency knob (`efSearch`) as the same class of tradeoff you already tune elsewhere, which is §2.8's whole point.",
+      "pick": false
+    },
+    {
+      "title": "Embedding Projector",
+      "author": "Smilkov, Thorat, Nicholson et al. (TensorFlow)",
+      "url": "https://projector.tensorflow.org/",
+      "type": "interactive",
+      "minutes": 15,
+      "why": "Load the built-in Word2Vec set and search a few terms — seeing nearest neighbours in a projected space is the fastest way to feel §2.4's topical-versus-propositional gap before you go and measure it in the lab.",
+      "pick": false
+    },
+    {
+      "title": "Chunking Strategies for LLM Applications",
+      "author": "Roie Schwaber-Cohen & Arjun Patel (Pinecone)",
+      "url": "https://www.pinecone.io/learn/chunking-strategies/",
+      "type": "blog",
+      "minutes": 20,
+      "why": "A practical survey of the chunking options you will bake off in the lab — fixed, recursive, semantic, contextual — and it agrees with §2.6 that chunking is a retrieval decision rather than a preprocessing detail.",
+      "pick": false
+    },
+    {
+      "title": "Introducing Contextual Retrieval",
+      "author": "Anthropic (engineering blog, 2024)",
+      "url": "https://www.anthropic.com/news/contextual-retrieval",
+      "type": "blog",
+      "minutes": 25,
+      "why": "The generalised form of §2.7's heading-path prefix trick with measured numbers (35% / 49% / 67% failure reduction as you stack embeddings, BM25 and reranking) — those are the figures to quote when someone asks whether prefixing is worth the index cost.",
+      "pick": false
+    }
+  ],
+  "4": [
+    {
+      "title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "author": "Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni & Liang (2023)",
+      "url": "https://arxiv.org/abs/2307.03172",
+      "type": "paper",
+      "minutes": 35,
+      "why": "Short, and the U-shaped curve figures are the entire argument for §2.5's ordering decision; do not skip the closed-book comparison, which is the part people forget when they claim more context is always better.",
+      "pick": true
+    },
+    {
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "author": "Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal, Küttler, Lewis, Yih, Rocktäschel, Riedel & Kiela (NeurIPS 2020)",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "type": "paper",
+      "minutes": 45,
+      "why": "The paper that named the thing — read §2 and note how different the original formulation (a trained, differentiable retriever) is from the prompt-assembly pipeline you are building, because that gap is a question you will be asked in a room.",
+      "pick": false
+    },
+    {
+      "title": "Enabling Large Language Models to Generate Text with Citations (ALCE)",
+      "author": "Tianyu Gao, Howard Yen, Jiatong Yu & Danqi Chen (2023)",
+      "url": "https://arxiv.org/abs/2305.14627",
+      "type": "paper",
+      "minutes": 40,
+      "why": "The academic treatment of §2.7's citation grades — read the citation-recall and citation-precision definitions in particular, since those two metrics give you the vocabulary to argue that Bronze citations are not citations.",
+      "pick": false
+    },
+    {
+      "title": "Citations",
+      "author": "Anthropic",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
+      "type": "docs",
+      "minutes": 25,
+      "why": "A shipped implementation of Gold citations from §2.7 — character-index spans back into the source document rather than model-generated reference numbers, which is precisely the verifiability property you are building by hand in the lab.",
+      "pick": false
+    },
+    {
+      "title": "Retrieval-Augmented Generation for Large Language Models: A Survey",
+      "author": "Gao, Xiong, Gao, Jia, Pan, Bi, Dai, Sun, Wang & Wang (2023)",
+      "url": "https://arxiv.org/abs/2312.10997",
+      "type": "paper",
+      "minutes": 30,
+      "why": "Skim it as a map, not a reading list — the naive/advanced/modular taxonomy and its figures give you shared vocabulary for a client design review, and it previews where Day 8 goes.",
+      "pick": false
+    }
+  ],
+  "5": [
+    {
+      "title": "Your AI Product Needs Evals",
+      "author": "Hamel Husain",
+      "url": "https://hamel.dev/blog/posts/evals/",
+      "type": "blog",
+      "minutes": 45,
+      "why": "The practitioner version of §2.1's ladder, with a real case study — it is emphatic that removing friction from looking at your own traces is the whole job, which is exactly the hand-review pass that is today's lab.",
+      "pick": true
+    },
+    {
+      "title": "Introduction to Information Retrieval, Chapter 8: Evaluation in Information Retrieval",
+      "author": "Manning, Raghavan & Schütze (Cambridge University Press, 2008)",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-in-information-retrieval-1.html",
+      "type": "docs",
+      "minutes": 50,
+      "why": "The authoritative free source for §2.3 — read §8.3 (precision/recall, MAP), §8.4 (ranked evaluation and nDCG) and especially §8.5, which is where kappa for inter-assessor agreement comes from and where you learn IR has been arguing about golden sets since before you started your career.",
+      "pick": false
+    },
+    {
+      "title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+      "author": "Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li, Li, Xing, Zhang, Gonzalez & Stoica (NeurIPS 2023 D&B)",
+      "url": "https://arxiv.org/abs/2306.05685",
+      "type": "paper",
+      "minutes": 45,
+      "why": "The source of the judge-human agreement numbers you will be asked for, plus measured effect sizes for position and verbosity bias — read §3 (limitations of LLM judges) if you read nothing else, since it is §2.5's four lies with data attached.",
+      "pick": false
+    },
+    {
+      "title": "Large Language Models are not Fair Evaluators",
+      "author": "Wang, Li, Chen, Cai, Zhu, Lin, Cao, Liu, Liu & Sui (2023)",
+      "url": "https://arxiv.org/abs/2305.17926",
+      "type": "paper",
+      "minutes": 25,
+      "why": "Short and blunt on position bias, and it hands you the swap-and-average calibration fix — a five-line change to your judge harness that you should make before you trust a single pairwise result.",
+      "pick": false
+    },
+    {
+      "title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
+      "author": "Shahul Es, Jithin James, Luis Espinosa-Anke & Steven Schockaert (2023)",
+      "url": "https://arxiv.org/abs/2309.15217",
+      "type": "paper",
+      "minutes": 30,
+      "why": "Read this after you have built your own judges, not before — then check whether its `faithfulness` claim decomposition matches the one you assumed, because the mismatch is the lesson.",
+      "pick": false
+    }
+  ],
+  "6": [
+    {
+      "title": "How to Speak",
+      "author": "Patrick Henry Winston (MIT OpenCourseWare, IAP 2018)",
+      "url": "https://ocw.mit.edu/courses/res-tll-005-how-to-speak-january-iap-2018/pages/how-to-speak/",
+      "type": "video",
+      "minutes": 60,
+      "why": "Forty years of MIT's best lecture on the mechanics §2.6 is about — how to open, how to use the board, when to use slides and when not to, how to end — and it is heuristics you can apply to your teach-back this afternoon rather than theory.",
+      "pick": true
+    },
+    {
+      "title": "The secret structure of great talks",
+      "author": "Nancy Duarte (TEDxEast, 2011)",
+      "url": "https://www.ted.com/talks/nancy_duarte_the_secret_structure_of_great_talks",
+      "type": "video",
+      "minutes": 18,
+      "why": "The sparkline analysis in eighteen minutes — the what-is versus what-could-be oscillation is the shape underneath §2.3's seven beats, and seeing it drawn once makes the beat list stop feeling arbitrary.",
+      "pick": false
+    },
+    {
+      "title": "Inventing on Principle (CUSEC 2012)",
+      "author": "Bret Victor",
+      "url": "https://archive.org/details/vimeo-36579366",
+      "type": "video",
+      "minutes": 55,
+      "why": "The reference implementation of 'show, then explain' — time how long he lets the first demo run before he says a word about it, then compare that to how long you wait in your own recording.",
+      "pick": false
+    },
+    {
+      "title": "Simple Made Easy (Strange Loop 2011)",
+      "author": "Rich Hickey",
+      "url": "https://www.infoq.com/presentations/Simple-Made-Easy/",
+      "type": "video",
+      "minutes": 62,
+      "why": "Watch once for content and once with a stopwatch on the slides — he holds essentially one frame for the whole hour, which is the cleanest available demonstration that the argument, not the deck, carries a technical talk.",
+      "pick": false
+    },
+    {
+      "title": "The Pretesting Effect: Do Unsuccessful Retrieval Attempts Enhance Learning?",
+      "author": "Lindsey E. Richland, Nate Kornell & Liche Sean Kao (JEP:Applied, 2009)",
+      "url": "https://learninglab.uchicago.edu/Pre-Testing_files/RichlandKornellKao.pdf",
+      "type": "paper",
+      "minutes": 40,
+      "why": "Fifteen pages of evidence for §2.5's hook — asking a question people will get wrong before you teach the answer beats giving them extra study time, and Experiments 1 and 5 are more surprising than any summary of them.",
+      "pick": false
+    }
+  ],
+  "7": [
+    {
+      "title": "Building Effective AI Agents",
+      "author": "Erik Schluntz & Barry Zhang (Anthropic engineering blog, 2024)",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "type": "blog",
+      "minutes": 35,
+      "why": "The clearest published statement of workflow-versus-agent, and it argues §2.8 harder than the module does — the seven named patterns are the vocabulary you will use in every client scoping conversation from here on.",
+      "pick": true
+    },
+    {
+      "title": "Tool use with Claude — overview",
+      "author": "Anthropic",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
+      "type": "docs",
+      "minutes": 30,
+      "why": "§2.1 and §2.2 in primary-source form — `stop_reason: \"tool_use\"`, the `tool_use` block, and the `tool_result` block you send back — which is the exact round trip your loop has to implement, and reading it before you write the loop saves an hour of guessing.",
+      "pick": false
+    },
+    {
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "author": "Yao, Zhao, Yu, Du, Shafran, Narasimhan & Cao (ICLR 2023)",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "type": "paper",
+      "minutes": 35,
+      "why": "Read §2 and Figure 1 and stop — the Thought/Action/Observation prompt format is obsolete now that tool calling is native, but the loop it describes is the one running inside every agent framework you will be handed.",
+      "pick": false
+    },
+    {
+      "title": "Amazon Bedrock — client-side tool use",
+      "author": "AWS documentation",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use-client-side.html",
+      "type": "docs",
+      "minutes": 25,
+      "why": "The `toolConfig` / `toolSpec` / `inputSchema.json` shape is the third wire format from §2.3 and it is the one your AWS clients will hand you — read it next to the Anthropic page above and the normalisation your registry needs becomes obvious.",
+      "pick": false
+    },
+    {
+      "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "author": "Shunyu Yao, Noah Shinn, Pedram Razavi & Karthik Narasimhan (2024)",
+      "url": "https://arxiv.org/abs/2406.12045",
+      "type": "paper",
+      "minutes": 35,
+      "why": "Multi-turn tool use with a rule-following requirement, and the pass^k consistency numbers are the antidote to single-shot benchmark optimism — useful the first time a client asks why the agent that worked in the demo is flaky in production.",
+      "pick": false
+    }
+  ],
+  "8": [
+    {
+      "title": "Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods",
+      "author": "Gordon V. Cormack, Charles L. A. Clarke & Stefan Büttcher (SIGIR 2009)",
+      "url": "https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf",
+      "type": "paper",
+      "minutes": 20,
+      "why": "Two pages, and it is where k=60 comes from (fixed in a pilot and never tuned again) — get §2.4's fusion function right before anything else today, and this is the whole specification for it.",
+      "pick": true
+    },
+    {
+      "title": "Precise Zero-Shot Dense Retrieval without Relevance Labels (HyDE)",
+      "author": "Luyu Gao, Xueguang Ma, Jimmy Lin & Jamie Callan (2022)",
+      "url": "https://arxiv.org/abs/2212.10496",
+      "type": "paper",
+      "minutes": 30,
+      "why": "Short, and §3's argument is exactly §2.3's — embed a hypothetical answer rather than the question, because answers live near answers in the vector space and questions do not.",
+      "pick": false
+    },
+    {
+      "title": "Corrective Retrieval Augmented Generation",
+      "author": "Shi-Qi Yan, Jia-Chen Gu, Yun Zhu & Zhen-Hua Ling (2024)",
+      "url": "https://arxiv.org/abs/2401.15884",
+      "type": "paper",
+      "minutes": 35,
+      "why": "The retrieval evaluator and the three-way correct/ambiguous/incorrect decision are §2.6 as a paper — pay attention to the fallback path, since deciding what happens on 'incorrect' is the design question your grading loop actually poses.",
+      "pick": false
+    },
+    {
+      "title": "Adaptive-RAG: Learning to Adapt Retrieval-Augmented LLMs through Question Complexity",
+      "author": "Jeong, Baek, Cho, Hwang & Park (NAACL 2024)",
+      "url": "https://arxiv.org/abs/2403.14403",
+      "type": "paper",
+      "minutes": 35,
+      "why": "This is §3 Part 2's blended-cost arithmetic written up as a paper and it is the lab's stretch goal — the classifier that routes by question complexity is the honest answer to 'why not just always decompose'.",
+      "pick": false
+    },
+    {
+      "title": "Agentic RAG with LangGraph",
+      "author": "LangChain documentation",
+      "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+      "type": "interactive",
+      "minutes": 45,
+      "why": "Runnable Python for the router, the document grader and the query-rewrite node assembled into a `StateGraph` — the concrete version of §2.8's 'when a state graph beats a loop', and worth running before you decide whether the graph bought you anything.",
+      "pick": false
+    }
+  ]
+}

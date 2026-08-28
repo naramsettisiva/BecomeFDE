@@ -1,6 +1,6 @@
 # Day 10 — Memory and Context Engineering
 
-**Fri Sep 4, 2026** · Week 2 · Maps to: **Module 04 — Memory and Context** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
+**Wed Sep 9, 2026** · Week 2 · Maps to: **Module 04 — Memory and Context** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
 
 > **Before you start — read `learn/DAY_10_LEARN.md` (1:15).**
 > Four memory types, the context budget, compaction loss. The lab below assumes it and does not re-explain it.
@@ -44,6 +44,14 @@ saves a cohort weeks of misdirected effort.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Three multi-agent topologies; when each is right.
 2. What is context loss at handoff, and what field prevents the most of it?

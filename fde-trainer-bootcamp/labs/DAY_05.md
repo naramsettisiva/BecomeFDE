@@ -1,6 +1,6 @@
 # Day 05 — Evals: Making "It Seems Better" Into a Number
 
-**Sat Aug 29, 2026** · Week 1 · Maps to: **Module 05 — Evals** · Backend: **local** + `[PAID]` judge · Est. cost: **$1–3**
+**Wed Sep 2, 2026** · Week 1 · Maps to: **Module 05 — Evals** · Backend: **local** + `[PAID]` judge · Est. cost: **$1–3**
 
 > **Before you start — read `learn/DAY_05_LEARN.md` (1:15).**
 > The eval ladder, retrieval metrics, judge bias, Cohen's kappa. The lab below assumes it and does not re-explain it.
@@ -46,6 +46,14 @@ the bootcamp compounds instead of accumulating.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 Closed book: state the four clauses of the RAG contract and, for each, the experiment
 that tells you it's the one that's broken.

@@ -1,4 +1,4 @@
-# AWS Lane — Week 2 (Sep 1–7)
+# AWS Lane — Week 2 (Sep 4 – Sep 11)
 
 **macOS. Est. AWS spend this week: $5–10. Est. added time: 4h 15m across six days.**
 

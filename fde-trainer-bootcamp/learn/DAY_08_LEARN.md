@@ -482,20 +482,35 @@ dependency detection are exactly those two, and the bake-off is meaningless if t
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *Precise Zero-Shot Dense Retrieval without Relevance Labels* — Gao, Ma, Lin & Callan, 2022. The
-  HyDE paper. Short, and §3's argument is the one in §2.3 above.
-- *Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods* — Cormack,
-  Clarke & Buettcher, SIGIR 2009. Two pages, and where k=60 comes from.
+<!--reading:08-->
+
+### If you read one thing this week
+
+**[Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf)** — Gordon V. Cormack, Charles L. A. Clarke & Stefan Büttcher (SIGIR 2009) · paper · ~20 min
+
+Two pages, and it is where k=60 comes from (fixed in a pilot and never tuned again) — get §2.4's fusion function right before anything else today, and this is the whole specification for it.
+
+### Then, in the order I'd take them
+
+- **[Precise Zero-Shot Dense Retrieval without Relevance Labels (HyDE)](https://arxiv.org/abs/2212.10496)** — Luyu Gao, Xueguang Ma, Jimmy Lin & Jamie Callan (2022) · paper · ~30 min  
+  Short, and §3's argument is exactly §2.3's — embed a hypothetical answer rather than the question, because answers live near answers in the vector space and questions do not.
+- **[Corrective Retrieval Augmented Generation](https://arxiv.org/abs/2401.15884)** — Shi-Qi Yan, Jia-Chen Gu, Yun Zhu & Zhen-Hua Ling (2024) · paper · ~35 min  
+  The retrieval evaluator and the three-way correct/ambiguous/incorrect decision are §2.6 as a paper — pay attention to the fallback path, since deciding what happens on 'incorrect' is the design question your grading loop actually poses.
+- **[Adaptive-RAG: Learning to Adapt Retrieval-Augmented LLMs through Question Complexity](https://arxiv.org/abs/2403.14403)** — Jeong, Baek, Cho, Hwang & Park (NAACL 2024) · paper · ~35 min  
+  This is §3 Part 2's blended-cost arithmetic written up as a paper and it is the lab's stretch goal — the classifier that routes by question complexity is the honest answer to 'why not just always decompose'.
+- **[Agentic RAG with LangGraph](https://docs.langchain.com/oss/python/langgraph/agentic-rag)** — LangChain documentation · interactive · ~45 min  
+  Runnable Python for the router, the document grader and the query-rewrite node assembled into a `StateGraph` — the concrete version of §2.8's 'when a state graph beats a loop', and worth running before you decide whether the graph bought you anything.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - *Self-RAG: Learning to Retrieve, Generate and Critique through Self-Reflection* — Asai et al.,
   2023. Note what's actually trained — reflection tokens — versus what people ship.
-- *Corrective Retrieval Augmented Generation* — Yan et al., 2024. The retrieval evaluator and the
-  web-search fallback.
 - *Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models* — Zheng et al.,
   2023.
-- *Adaptive-RAG: Learning to Adapt Retrieval-Augmented LLMs through Question Complexity* — Jeong
-  et al., NAACL 2024. This is §3 Part 2 as a paper, and it's the lab's stretch goal.
 - *Interleaving Retrieval with Chain-of-Thought Reasoning* (IRCoT) — Trivedi et al., 2022, and
   *HotpotQA* — Yang et al., 2018, if you want the multi-hop benchmark lineage.
 

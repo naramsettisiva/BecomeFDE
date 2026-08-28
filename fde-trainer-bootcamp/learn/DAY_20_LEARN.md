@@ -335,7 +335,26 @@ are the only genuinely new material today.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:20-->
+
+### If you read one thing this week
+
+**[Shape Up — Chapter 13, Show Progress](https://basecamp.com/shapeup/3.4-chapter-13)** — Ryan Singer (Basecamp) · docs · ~20 min
+
+Scopes and the hill chart — a language for "ugly and complete beats beautiful and partial" that a client can read off a wall.
+
+### Then, in the order I'd take them
+
+- **[Choose Boring Technology](https://mcfunley.com/choose-boring-technology)** — Dan McKinley (Mar 2015) · essay · ~20 min  
+  The innovation-token argument, applied on a two-day capstone: you get one interesting choice, and it should be the thing you're demoing, not the database.
+- **[The Grug Brained Developer](https://grugbrain.dev/)** — Carson Gross · essay · ~25 min  
+  Funny, and quietly the best short piece on complexity discipline under deadline — read it the morning of a build day, not the week before.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - Your `LEARNING_LOG.md` from Day 13 — reuse the judge calibration numbers, don't re-derive them.
 - Anthropic's published guidance on evaluating open-ended generation — the split into

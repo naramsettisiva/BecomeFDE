@@ -1,6 +1,6 @@
 # Day 17 — Deployment: Docker, Cloud, CI/CD, and the Handover
 
-**Sat Sep 12, 2026** · Week 3 · Maps to: **Module 08 — Production I** · Backend: **hosted** · Est. cost: **$2–5**
+**Fri Sep 18, 2026** · Week 3 · Maps to: **Module 08 — Production I** · Backend: **hosted** · Est. cost: **$2–5**
 
 > **Before you start — read `learn/DAY_17_LEARN.md` (1:15).**
 > Deployment topologies, the egress question, tenant isolation. The lab below assumes it and does not re-explain it.
@@ -43,6 +43,14 @@ gratefully received things in any bootcamp.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Which regression was planted, and what signal gave it away first?
 2. How long did the incident drill take? What would have made it faster?

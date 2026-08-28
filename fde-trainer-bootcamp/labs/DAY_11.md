@@ -1,6 +1,6 @@
 # Day 11 — MCP, Tools, and Skills: Making Capability Portable
 
-**Sat Sep 5, 2026** · Week 2 · Maps to: **Module 06 — Advanced Retrieval & Skills** · Backend: **local** + `[PAID]` · Est. cost: **$1–2**
+**Thu Sep 10, 2026** · Week 2 · Maps to: **Module 06 — Advanced Retrieval & Skills** · Backend: **local** + `[PAID]` · Est. cost: **$1–2**
 
 > **Before you start — read `learn/DAY_11_LEARN.md` (1:15).**
 > MCP architecture, the three primitives, skills. The lab below assumes it and does not re-explain it.
@@ -46,6 +46,14 @@ the supply of people who've built one.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Four memory types, and which one is most often skipped.
 2. Where did your needle heatmap start degrading? What's your reliability ceiling?

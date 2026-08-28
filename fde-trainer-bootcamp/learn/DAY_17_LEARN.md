@@ -580,7 +580,28 @@ architect will read closely — the lab will not re-explain either.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:17-->
+
+### If you read one thing this week
+
+**[OWASP Top 10 for LLM Applications (2025)](https://genai.owasp.org/llm-top-10/)** — OWASP GenAI Security Project · docs · ~40 min
+
+This is the checklist a client's security team will actually hand you; knowing it before the meeting is the difference between leading the review and surviving it.
+
+### Then, in the order I'd take them
+
+- **[The Twelve-Factor App](https://12factor.net/)** — Adam Wiggins · docs · ~35 min  
+  Config, backing services and disposability are exactly the properties your Day 17 container needs; it predates LLM work and is still the clearest statement of why secrets live in the environment.
+- **[Multi-stage builds](https://docs.docker.com/build/building/multi-stage/)** — Docker · docs · ~15 min  
+  The exact pattern in your Dockerfile — build deps in one stage, copy the artefact into a slim runtime — read it once so image size becomes a decision rather than an accident.
+- **[Configuring OpenID Connect in Amazon Web Services](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws)** — GitHub Docs · docs · ~20 min  
+  The no-long-lived-keys CI pattern from Day 17's checklist, written out; it takes twenty minutes and it is the single clearest signal to a platform team that you have done this before.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *Accelerate* — Forsgren, Humble and Kim, 2018. The empirical case that deployment frequency,
   lead time, change-failure rate and restore time move together. Useful for the argument you'll have
@@ -595,11 +616,6 @@ architect will read closely — the lab will not re-explain either.
 - The grouped-query attention work (Ainslie et al., 2023) is the reason the KV figure in §3 Q1 is
   8 heads rather than 32 — a 4× reduction in cache size. Worth ten minutes if you want to explain
   why newer models are cheaper to serve at long context.
-- Docker's multi-stage build documentation, and Google's **distroless** base images. Distroless is
-  the next step past `-slim` when a client's scanner is flagging OS packages you don't use.
-- The **OWASP Top 10 for LLM Applications** — read it now, before Day 18. Several of §2.6's eight
-  questions map onto its entries, and citing it by name in a security answer is disproportionately
-  reassuring to a reviewer who has seen it before.
 - Your cloud provider's PrivateLink / VPC endpoint documentation for their managed model service.
   Read the section on *where inference executes* rather than the network diagram — that's the
   paragraph §2.2's question 2 turns on, and it is usually one sentence.

@@ -1,0 +1,428 @@
+{
+  "1": {
+    "hook": "You are about to call a model. What is on the other end of that call, and what does each call cost you?",
+    "objectives": [
+      "Explain autoregressive generation and temperature to someone who has never seen a model call",
+      "Count tokens for a prompt and convert them to dollars without looking anything up",
+      "Name the four layers people conflate — model, API, framework, application — and say which one a given bug lives in"
+    ],
+    "terms": [
+      "autoregressive",
+      "token",
+      "temperature",
+      "top-p",
+      "context window",
+      "the seam"
+    ],
+    "needs": "Nothing. This is the first chapter — a working Python environment is all you need."
+  },
+  "2": {
+    "hook": "The model gave you JSON. Twice. The third time it gave you JSON wrapped in an apology. How do you build on that?",
+    "objectives": [
+      "Choose between prompting, function-calling and constrained decoding for a given reliability requirement",
+      "Design a schema whose field order improves the answer, and add an evidence quote that makes hallucination checkable",
+      "Size a concurrency limit from a rate limit, and distinguish the two controls people conflate"
+    ],
+    "terms": [
+      "constrained decoding",
+      "JSON mode",
+      "evidence quote",
+      "semaphore",
+      "token bucket",
+      "exponential backoff with jitter",
+      "idempotency"
+    ],
+    "needs": "Day 1 — what a model call is, tokens, the four layers."
+  },
+  "3": {
+    "hook": "A user asks “what do I get charged for sitting at the dock?” Your policy document says “detention accrues at $65/hr.” Zero shared words. How do you find it?",
+    "objectives": [
+      "Describe what an embedding is and what it is not, without saying “it captures semantic meaning”",
+      "Compute cosine and Euclidean distance by hand and state the relationship between them for unit vectors",
+      "Predict which of two retrieval failures is topical and which is propositional, and choose a chunking strategy on that basis"
+    ],
+    "terms": [
+      "embedding",
+      "cosine similarity",
+      "L2 / Euclidean distance",
+      "unit vector",
+      "topical vs propositional similarity",
+      "chunking",
+      "heading-path prefixing",
+      "HNSW"
+    ],
+    "needs": "Day 1 (tokens, cost) and Day 2 (structured output). Bring pen and paper — §3 has real arithmetic."
+  },
+  "4": {
+    "hook": "Retrieval found the right paragraph. The answer is still wrong, and it cites a page that does not say what the answer claims. Which clause of the contract broke?",
+    "objectives": [
+      "State the four-clause RAG contract and identify which clause a given failure violates",
+      "Compute retrieval recall on a golden set and explain why it is the ceiling on answer quality",
+      "Assemble a prompt with deliberate ordering, k, and citation grade rather than by default"
+    ],
+    "terms": [
+      "the four-clause contract",
+      "grounded refusal",
+      "recall@k",
+      "lost in the middle",
+      "citation grade",
+      "prompt assembly"
+    ],
+    "needs": "Day 3 — embeddings, distance, chunking. You will use the index you built."
+  },
+  "5": {
+    "hook": "Your system is better than last week. Prove it. Not with a demo — with a number, and an interval around that number.",
+    "objectives": [
+      "Build a golden set and explain why it, not the code, is the product",
+      "Read a retrieval metric and say what it hides — and why an aggregate score can rise while every user gets worse",
+      "Name the four biases of an LLM judge and calibrate one against human labels using Cohen's κ"
+    ],
+    "terms": [
+      "golden set",
+      "recall@k",
+      "MRR",
+      "nDCG",
+      "LLM-as-judge",
+      "position bias",
+      "Cohen's κ",
+      "noise floor"
+    ],
+    "needs": "Day 4 — the RAG contract and a working pipeline to measure."
+  },
+  "6": {
+    "hook": "Six days of parts. Today they become one system, and you argue for it in front of a room.",
+    "objectives": [
+      "Trace Week 1 as a single causal chain and name what each day contributes to the final answer",
+      "Structure a demo as an argument in seven beats rather than a feature tour",
+      "Engineer a demo so a network failure or a slow model does not end it"
+    ],
+    "terms": [
+      "vertical slice",
+      "the seven beats",
+      "demo failure modes",
+      "the six-part lesson shape",
+      "rubric-as-judge"
+    ],
+    "needs": "Days 1–5. This is a capstone day: the module is short and the build is long."
+  },
+  "7": {
+    "hook": "The model does not call your function. It writes text that looks like a function call, and you decide what to do about it.",
+    "objectives": [
+      "Write the agent loop in five steps from memory, without a framework",
+      "Choose termination conditions beyond max_steps and justify each one",
+      "Write a tool description that changes model behaviour, and explain why it is the highest-leverage prompt surface you control"
+    ],
+    "terms": [
+      "tool call",
+      "the agent loop",
+      "ReAct",
+      "observation",
+      "termination condition",
+      "tool description",
+      "wire format"
+    ],
+    "needs": "Day 2 (structured output) and Day 4 (prompt assembly). Week 2 begins here."
+  },
+  "8": {
+    "hook": "“Which of our carriers had worse on-time performance than Ridgeline last quarter?” One retrieval cannot answer that. What can?",
+    "objectives": [
+      "Match a query shape to the right pattern — routing, rewriting, decomposition, or correction",
+      "Compute reciprocal rank fusion by hand and explain why ranks beat scores",
+      "Price each pattern in tokens and latency, so you can say what agentic RAG costs before you propose it"
+    ],
+    "terms": [
+      "routing",
+      "query rewriting",
+      "decomposition",
+      "corrective RAG",
+      "reciprocal rank fusion",
+      "RRF k=60",
+      "blended cost"
+    ],
+    "needs": "Day 7 (the agent loop) and Day 4 (the RAG contract)."
+  },
+  "9": {
+    "hook": "Five agents sound better than one. Count the tokens before you believe that.",
+    "objectives": [
+      "Describe a worker agent as a tool whose implementation is another loop",
+      "Name the three failure modes — context loss, responsibility diffusion, cost explosion — and detect each in a trace",
+      "Argue the case against multi-agent for a given problem, with the token arithmetic to back it"
+    ],
+    "terms": [
+      "supervisor topology",
+      "pipeline topology",
+      "blackboard",
+      "typed handoff",
+      "responsibility diffusion",
+      "plan-and-execute"
+    ],
+    "needs": "Days 7–8. Bring pen and paper — the token accounting is the argument."
+  },
+  "10": {
+    "hook": "The model remembers nothing between calls. Everything that feels like memory is something you rebuilt and paid for again.",
+    "objectives": [
+      "Distinguish the four memory types by what each is physically made of",
+      "Allocate a context window line by line as a budget, including the tool schemas people forget",
+      "Choose a compaction strategy and state precisely what it loses"
+    ],
+    "terms": [
+      "working memory",
+      "episodic memory",
+      "semantic memory",
+      "procedural memory",
+      "dedupe-on-write",
+      "compaction",
+      "effective context"
+    ],
+    "needs": "Days 7–9 — you need an agent whose context you can watch grow."
+  },
+  "11": {
+    "hook": "Every tool you wrote works with your agent and nothing else. MCP is the answer to that, and it is smaller than it sounds.",
+    "objectives": [
+      "Explain the N×M → N+M argument and where MCP sits in an architecture",
+      "Name the three primitives — tools, resources, prompts — and say who is in control of each",
+      "Define what a skill actually is, and avoid the stdio gotcha that breaks every first server"
+    ],
+    "terms": [
+      "MCP",
+      "tools / resources / prompts",
+      "stdio transport",
+      "server",
+      "host",
+      "skill",
+      "tenancy"
+    ],
+    "needs": "Day 7 (tool calling). You will convert tools you already wrote."
+  },
+  "12": {
+    "hook": "Every part passes its own test. The system still fails, and the failure lives in a seam nobody owns.",
+    "objectives": [
+      "Name four problems that exist only at the seams between components",
+      "Evaluate a system end to end rather than part by part, and attribute latency and cost per node",
+      "Run an architecture review — a different format from a tutorial, with different rules"
+    ],
+    "terms": [
+      "seam failure",
+      "system-level eval",
+      "p50 vs p95",
+      "per-node attribution",
+      "trace",
+      "architecture review"
+    ],
+    "needs": "Days 7–11. This is an integration day: the module is short and the build is long."
+  },
+  "13": {
+    "hook": "Your hand-written golden set has forty cases and you have run out of imagination. Manufacture the rest.",
+    "objectives": [
+      "Run four case generators — extractive, multi-hop, adversarial, persona — and state what each one tests",
+      "Calibrate a judge the way you would calibrate an instrument, including position bias as a measurement",
+      "Set a release gate above the noise floor, with a confidence interval you computed"
+    ],
+    "terms": [
+      "extractive generation",
+      "multi-hop",
+      "adversarial case",
+      "persona rewriting",
+      "judge calibration",
+      "pairwise comparison",
+      "noise floor",
+      "release gate"
+    ],
+    "needs": "Day 5 (evals) and Day 12 (a working system). Bring pen and paper."
+  },
+  "14": {
+    "hook": "Dense retrieval misses the shipment ID, the acronym, and the exact clause number. Everything in this chapter fixes one of those.",
+    "objectives": [
+      "Map a retrieval failure to the specific tool that fixes it",
+      "Compute a BM25 score by hand and explain why its shape wins exactly where embeddings fail",
+      "Order the techniques — hybrid, fusion, rerank, contextual, dedupe — and know when to stop"
+    ],
+    "terms": [
+      "BM25",
+      "term frequency saturation",
+      "hybrid search",
+      "RRF",
+      "bi-encoder vs cross-encoder",
+      "reranking",
+      "contextual retrieval",
+      "near-duplicate"
+    ],
+    "needs": "Days 3–4 and Day 13. Bring pen and paper — the BM25 and RRF arithmetic is the day."
+  },
+  "15": {
+    "hook": "It works on your laptop, in a process you start by hand. Today other people's software calls it.",
+    "objectives": [
+      "Name the four ways an LLM endpoint breaks normal API reflexes, and what each one forces",
+      "Design strictly nested timeouts including retries, and cancel work when the client disconnects",
+      "Build the three cache layers and calibrate a semantic-cache threshold yourself"
+    ],
+    "terms": [
+      "SSE streaming",
+      "client disconnect",
+      "layered timeout",
+      "exact cache",
+      "semantic cache",
+      "prompt caching",
+      "guardrail escalation",
+      "false-positive rate"
+    ],
+    "needs": "Day 12 (an integrated system) and Day 2 (concurrency)."
+  },
+  "16": {
+    "hook": "It failed at 3am and you were not there. What has to be in the trace for anyone to answer “why?” without you?",
+    "objectives": [
+      "Say what a span must carry for an LLM failure, and why generic HTTP tracing under-determines it",
+      "Design a prompt-capture sampling policy you can afford, and version your config so “what changed Tuesday?” is answerable",
+      "Use the retrieval score distribution as a leading indicator of drift"
+    ],
+    "terms": [
+      "span tree",
+      "prompt capture",
+      "sampling policy",
+      "config version hash",
+      "score distribution drift",
+      "PII redaction at write time",
+      "feedback loop"
+    ],
+    "needs": "Day 15 (a served system). Bring pen and paper for the sampling arithmetic."
+  },
+  "17": {
+    "hook": "“Can it run inside our VPC with no internet?” is not one question. It is three, and the answers change the architecture.",
+    "objectives": [
+      "Choose among four deployment topologies by naming the constraint each one hits",
+      "Decompose the egress question into its three real questions and answer each",
+      "Produce the handover artifact set — the thing that makes you leavable"
+    ],
+    "terms": [
+      "deployment topology",
+      "egress",
+      "air-gapped",
+      "multi-stage build",
+      "tenant filtering in the query",
+      "smoke test",
+      "handover artifact set"
+    ],
+    "needs": "Days 15–16. Bring pen and paper — the KV-cache and concurrency arithmetic changes architectures."
+  },
+  "18": {
+    "hook": "Two questions you will answer in front of clients for the rest of your career: what does this cost at our volume, and can a document in our corpus attack us?",
+    "objectives": [
+      "Order the cost levers by leverage and align a prompt so the cache actually hits",
+      "Compute a self-hosting break-even honestly, including the fixed costs that dominate at pilot scale",
+      "Treat indirect prompt injection as a trust boundary and name the residual risk that remains"
+    ],
+    "terms": [
+      "prompt-cache alignment",
+      "model routing",
+      "break-even volume",
+      "fixed vs marginal cost",
+      "indirect prompt injection",
+      "trust boundary",
+      "defence in depth",
+      "residual risk"
+    ],
+    "needs": "Days 15–17. Bring pen and paper — both calculations are the day."
+  },
+  "19": {
+    "hook": "Week 4. The engineering is behind you. Now: how does the work get chosen, scoped, and defended?",
+    "objectives": [
+      "Describe what a Forward Deployed Engineer actually is, and the four modes the role switches between",
+      "Run a discovery conversation across six areas without turning it into a requirements interview",
+      "Scope eval-first — the move that separates you from a vendor demo"
+    ],
+    "terms": [
+      "Forward Deployed Engineer",
+      "the four modes",
+      "six-area discovery",
+      "eval-first scoping",
+      "week-one plan",
+      "demoing the failures"
+    ],
+    "needs": "Weeks 1–3. This chapter is about the work around the work."
+  },
+  "20": {
+    "hook": "Two days, one capstone. The constraint is not skill. It is deciding, out loud, what you are not shipping.",
+    "objectives": [
+      "Cut a vertical slice and write the NOT SHIPPING list before you write code",
+      "Design the demo moment first and build backwards from it",
+      "Evaluate a whole document rather than a single answer, and fix failures in the right order"
+    ],
+    "terms": [
+      "vertical slice",
+      "NOT SHIPPING list",
+      "the demo moment",
+      "document-level eval",
+      "adversarial check",
+      "fix order"
+    ],
+    "needs": "Day 19 and everything before it. The module is short because the build is two days."
+  },
+  "21": {
+    "hook": "A senior engineer at the client will try to take your system apart in a meeting. Make that a good meeting.",
+    "objectives": [
+      "Define “defensible” concretely, and work a hardening checklist where every line has a reason",
+      "Answer the teardown question — what would you remove, and what would break",
+      "Write a case study whose limitations section is what makes it credible"
+    ],
+    "terms": [
+      "defensibility",
+      "hardening checklist",
+      "teardown question",
+      "case study",
+      "stated limitations"
+    ],
+    "needs": "Day 20 — you need the capstone to defend."
+  },
+  "22": {
+    "hook": "You know this material. That is precisely why you are about to teach it badly.",
+    "objectives": [
+      "Explain why topic organisation is the wrong index for a lesson, and what the right one is",
+      "Build a lesson in eight beats, with an open loop that makes adults want the next one",
+      "Diagnose a wrong answer rather than merely marking it wrong"
+    ],
+    "terms": [
+      "the eight beats",
+      "open loop",
+      "cognitive load",
+      "worked example",
+      "formative assessment",
+      "diagnosis",
+      "the curse of knowledge"
+    ],
+    "needs": "Your LEARNING_LOG.md — your own confusions are the raw material for this chapter."
+  },
+  "23": {
+    "hook": "Live, you cannot edit. Everything that makes live teaching survivable is decided before you start.",
+    "objectives": [
+      "Work a pre-flight checklist and say why each line is on it",
+      "Recover on camera from a broken demo without losing the room",
+      "Handle the five question types, including the honest three-part “I don't know”"
+    ],
+    "terms": [
+      "pre-flight checklist",
+      "recovery",
+      "the parking lot",
+      "the three-part I-don't-know",
+      "the five question types",
+      "facilitation"
+    ],
+    "needs": "Day 22 — you deliver the lesson you designed."
+  },
+  "24": {
+    "hook": "The course ends today. What you do in the ninety days after it is what decides whether any of this held.",
+    "objectives": [
+      "Give an eight-minute demo that lands without narration crutches",
+      "Build three portfolio surfaces that each do a different job",
+      "Write an honest gap assessment, pick two gaps, and replace this course's structure with a habit"
+    ],
+    "terms": [
+      "the eight-minute demo",
+      "portfolio surfaces",
+      "narrow data-backed writing",
+      "honest gap assessment",
+      "the three tracks",
+      "the teaching calendar"
+    ],
+    "needs": "Everything. This is the last chapter."
+  }
+}

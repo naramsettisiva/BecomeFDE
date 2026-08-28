@@ -1,6 +1,6 @@
 # Day 07 — Tool Calling and the Agent Loop, From First Principles
 
-**Tue Sep 1, 2026** · Week 2 · Maps to: **Module 02 — Agentic RAG** · Backend: **local** + `[PAID]` · Est. cost: **$1–2**
+**Fri Sep 4, 2026** · Week 2 · Maps to: **Module 02 — Agentic RAG** · Backend: **local** + `[PAID]` · Est. cost: **$1–2**
 
 > **Before you start — read `learn/DAY_07_LEARN.md` (1:15).**
 > What a tool call really is, the loop, three wire formats. The lab below assumes it and does not re-explain it.
@@ -46,6 +46,14 @@ can then explain LangGraph in four sentences instead of a whole session.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 Flashcards from your Day 6 miss list, then:
 

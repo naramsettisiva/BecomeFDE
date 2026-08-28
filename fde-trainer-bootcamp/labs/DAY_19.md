@@ -1,6 +1,6 @@
 # Day 19 — The FDE Craft: Discovery, Scoping, and the First Two Weeks
 
-**Tue Sep 15, 2026** · Week 4 · Maps to: **the role itself** · Backend: n/a · Est. cost: **$0–1**
+**Tue Sep 22, 2026** · Week 4 · Maps to: **the role itself** · Backend: n/a · Est. cost: **$0–1**
 
 > **Before you start — read `learn/DAY_19_LEARN.md` (1:15).**
 > The FDE operating model, discovery, eval-first scoping. The lab below assumes it and does not re-explain it.
@@ -48,6 +48,14 @@ session of a programme, because it's the one that changes how people work on Mon
 ---
 
 ## Block 0 — Week 3 recall (0:20)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Noise floor → threshold setting: what's the rule?
 2. Which retrieval technique gave the biggest jump, and at what latency cost?

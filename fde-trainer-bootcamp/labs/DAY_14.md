@@ -1,6 +1,6 @@
 # Day 14 — Advanced Retrieval: Hybrid, Rerank, and Context Engineering
 
-**Wed Sep 9, 2026** · Week 3 · Maps to: **Module 06 — Advanced Retrieval & Skills** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
+**Tue Sep 15, 2026** · Week 3 · Maps to: **Module 06 — Advanced Retrieval & Skills** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
 
 > **Before you start — read `learn/DAY_14_LEARN.md` (1:15).**
 > BM25, RRF, cross-encoders, near-duplicates. The lab below assumes it and does not re-explain it.
@@ -41,6 +41,14 @@ a visible number change. Build the demos so each one moves a metric on screen.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Your noise floor: which metric was noisiest, and what σ did you measure?
 2. Final judge κ, and what rubric change moved it most?

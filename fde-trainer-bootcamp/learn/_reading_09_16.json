@@ -1,0 +1,369 @@
+{
+  "9": [
+    {
+      "title": "How we built our multi-agent research system",
+      "author": "Jeremy Hadfield, Barry Zhang, Kenneth Lien, Florian Scholz, Jeremy Fox & Daniel Ford (Anthropic)",
+      "url": "https://www.anthropic.com/engineering/built-multi-agent-research-system",
+      "type": "blog",
+      "minutes": 35,
+      "why": "Supervisor/worker from §2.2 written up as a production post-mortem rather than a diagram — read the sections on delegation instructions and on token burn, which are §2.3's context loss at handoff and §2.5's cost explosion described by people who paid for both.",
+      "pick": true
+    },
+    {
+      "title": "Don't Build Multi-Agents",
+      "author": "Walden Yan (Cognition)",
+      "url": "https://cognition.com/blog/dont-build-multi-agents",
+      "type": "blog",
+      "minutes": 15,
+      "why": "The strongest published argument against everything today teaches — that agents must share full traces, not summaries — so read it directly against §2.3 and you'll be able to answer the client architect who arrives having already read it.",
+      "pick": false
+    },
+    {
+      "title": "Why Do Multi-Agent LLM Systems Fail?",
+      "author": "Mert Cemri, Melissa Z. Pan, Shuyi Yang, Lakshya A. Agrawal, Bhavya Chopra, Rishabh Tiwari, Kurt Keutzer, Aditya Parameswaran, Dan Klein, Kannan Ramchandran, Matei Zaharia, Joseph E. Gonzalez & Ion Stoica",
+      "url": "https://arxiv.org/abs/2503.13657",
+      "type": "paper",
+      "minutes": 40,
+      "why": "Skip the methodology and read the MAST taxonomy itself — 14 failure modes observed across 1,600+ real traces, grouped into design / inter-agent misalignment / verification, which is a far better checklist for responsibility diffusion than anything you'd write from first principles.",
+      "pick": false
+    },
+    {
+      "title": "Handoffs — OpenAI Agents SDK",
+      "author": "OpenAI",
+      "url": "https://openai.github.io/openai-agents-python/handoffs/",
+      "type": "docs",
+      "minutes": 15,
+      "why": "Shows §2.1's claim — a handoff is just a tool call — as working code, and the `input_type` and input-filter sections are a typed handoff object and an explicit decision about what context crosses the boundary.",
+      "pick": false
+    },
+    {
+      "title": "Multi-agent (LangChain docs)",
+      "author": "LangChain",
+      "url": "https://docs.langchain.com/oss/python/langchain/multi-agent",
+      "type": "docs",
+      "minutes": 20,
+      "why": "Compares subagents, handoffs, router and skills across three scenarios with model-call and token counts attached to each — the cost arithmetic of §2.5 laid out as a table you can lift into a client conversation.",
+      "pick": false
+    }
+  ],
+  "10": [
+    {
+      "title": "Effective context engineering for AI agents",
+      "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan & Jeremy Hadfield (Anthropic Applied AI team)",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "type": "blog",
+      "minutes": 30,
+      "why": "The single best framing of §2.5's context budget as a finite resource you spend rather than a window you fill, and it names compaction, note-taking and sub-agent offload as the three strategies with the trade-off each one makes.",
+      "pick": true
+    },
+    {
+      "title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance",
+      "author": "Kelly Hong, Anton Troynikov & Jeff Huber (Chroma)",
+      "url": "https://www.trychroma.com/research/context-rot",
+      "type": "blog",
+      "minutes": 35,
+      "why": "Eighteen models measured across growing inputs, including a needle-in-a-haystack variant with distractors — this is the empirical successor to Day 4's lost-in-the-middle paper and it is what makes 'more context is not free' a number rather than a slogan.",
+      "pick": false
+    },
+    {
+      "title": "MemGPT: Towards LLMs as Operating Systems",
+      "author": "Charles Packer, Sarah Wooders, Kevin Lin, Vivian Fang, Shishir G. Patil, Ion Stoica & Joseph E. Gonzalez",
+      "url": "https://arxiv.org/abs/2310.08560",
+      "type": "paper",
+      "minutes": 40,
+      "why": "Read §3 (the memory hierarchy and the paging interface) and skip the evaluations — it is your virtual-memory intuition applied directly to the context window, which is the fastest route from 23 years of systems experience to the working/episodic/semantic split.",
+      "pick": false
+    },
+    {
+      "title": "Memory tool",
+      "author": "Anthropic",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool",
+      "type": "docs",
+      "minutes": 20,
+      "why": "A memory store as a concrete file-backed API (view / create / str_replace / insert / delete) — useful because it forces the question §2.2 raises: which of the four memory types are you actually writing into it, and with what dedupe policy.",
+      "pick": false
+    },
+    {
+      "title": "Context editing",
+      "author": "Anthropic",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/context-editing",
+      "type": "docs",
+      "minutes": 20,
+      "why": "Compaction as a shipped product surface — tool-result clearing, thinking-block clearing and summary-based compaction, each with a different thing it throws away, which is exactly §2.4's 'what each strategy loses' made checkable against a real implementation.",
+      "pick": false
+    }
+  ],
+  "11": [
+    {
+      "title": "Architecture overview (Model Context Protocol)",
+      "author": "Model Context Protocol maintainers / Anthropic",
+      "url": "https://modelcontextprotocol.io/docs/learn/architecture",
+      "type": "docs",
+      "minutes": 25,
+      "why": "The primary source for §2.2 and §2.3 in one page — host/client/server with the 1:1 client-per-server rule stated outright, JSON-RPC 2.0 on the wire, and stdio vs streamable HTTP characterised the way you'd characterise any transport.",
+      "pick": true
+    },
+    {
+      "title": "Understanding MCP servers (server concepts)",
+      "author": "Model Context Protocol maintainers / Anthropic",
+      "url": "https://modelcontextprotocol.io/docs/learn/server-concepts",
+      "type": "docs",
+      "minutes": 25,
+      "why": "Carries the table that makes the three primitives make sense — tools are model-controlled, resources application-controlled, prompts user-controlled — which is the distinction §2.4 hangs everything on and the one most MCP explainers get wrong.",
+      "pick": false
+    },
+    {
+      "title": "Introducing the Model Context Protocol",
+      "author": "Anthropic",
+      "url": "https://www.anthropic.com/news/model-context-protocol",
+      "type": "blog",
+      "minutes": 10,
+      "why": "The original announcement, and worth ten minutes purely for the framing you'll reuse in client meetings: the N×M problem of §2.1 stated by the people who chose to solve it with a protocol rather than an SDK.",
+      "pick": false
+    },
+    {
+      "title": "Build an MCP server (quickstart tutorial)",
+      "author": "Model Context Protocol maintainers / Anthropic",
+      "url": "https://modelcontextprotocol.io/docs/develop/build-server",
+      "type": "interactive",
+      "minutes": 60,
+      "why": "An hour with a real stdio server and a real host beats any amount of reading about the protocol — you'll hit the lifecycle, the tool schema and the 'never log to stdout on stdio' rule yourself, which is how those stop being trivia.",
+      "pick": false
+    },
+    {
+      "title": "Equipping agents for the real world with Agent Skills",
+      "author": "Barry Zhang, Keith Lazuka & Mahesh Murag (Anthropic)",
+      "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
+      "type": "blog",
+      "minutes": 25,
+      "why": "Skills as portable procedural capability — a folder of instructions and scripts loaded by progressive disclosure — which is §2.8's contrast with MCP: MCP moves connections, skills move know-how, and the two solve different halves of the same problem.",
+      "pick": false
+    }
+  ],
+  "12": [
+    {
+      "title": "Building A Generative AI Platform",
+      "author": "Chip Huyen",
+      "url": "https://huyenchip.com/2024/07/25/genai-platform.html",
+      "type": "blog",
+      "minutes": 45,
+      "why": "The closest thing in print to the architecture review you're being asked to produce — context enhancement, guardrails, router/gateway, three cache layers, observability and orchestration, built up one layer at a time with the failure each layer answers.",
+      "pick": true
+    },
+    {
+      "title": "The Tail at Scale",
+      "author": "Jeffrey Dean & Luiz André Barroso",
+      "url": "https://www.barroso.org/publications/TheTailAtScale.pdf",
+      "type": "paper",
+      "minutes": 30,
+      "why": "You almost certainly know this one, and today is when to re-read it with agents in mind: an LLM pipeline is a fan-out of slow, variable-latency components, so the tail-amplification argument applies directly to §2.3's p50-vs-p95 split.",
+      "pick": false
+    },
+    {
+      "title": "How NOT to Measure Latency",
+      "author": "Gil Tene (QCon San Francisco)",
+      "url": "https://www.infoq.com/presentations/latency-response-time/",
+      "type": "video",
+      "minutes": 55,
+      "why": "The definitive demolition of averaging percentiles and of measuring only what your load generator managed to send — watch it before you put a single latency number in front of a client, because the coordinated-omission trap is easy to fall into with agent traces.",
+      "pick": false
+    },
+    {
+      "title": "Token & Cost Tracking",
+      "author": "Langfuse",
+      "url": "https://langfuse.com/docs/observability/features/token-and-cost-tracking",
+      "type": "docs",
+      "minutes": 15,
+      "why": "Shows what per-node cost attribution actually requires — usage captured per generation, prices resolved per model version, costs rolled up the trace — which is the plumbing behind §2.4's per-node cost table.",
+      "pick": false
+    }
+  ],
+  "13": [
+    {
+      "title": "Using LLM-as-a-Judge For Evaluation: A Complete Guide",
+      "author": "Hamel Husain",
+      "url": "https://hamel.dev/blog/posts/llm-judge/",
+      "type": "blog",
+      "minutes": 45,
+      "why": "The 'critique shadowing' loop is judge calibration done properly — a domain expert grades a sample, you measure agreement, you fix the prompt, you re-measure — and the insistence on binary pass/fail with a written critique is the single change that most improves a judge you already have.",
+      "pick": true
+    },
+    {
+      "title": "Who Validates the Validators? Aligning LLM-Assisted Evaluation of LLM Outputs with Human Preferences",
+      "author": "Shreya Shankar, J.D. Zamfirescu-Pereira, Björn Hartmann, Aditya G. Parameswaran & Ian Arawjo",
+      "url": "https://arxiv.org/abs/2404.12272",
+      "type": "paper",
+      "minutes": 40,
+      "why": "Read the sections on criteria drift and on the EvalGen interface — the finding that people only discover their real grading criteria by grading outputs is why §2.6's calibration set has to be built before the rubric is frozen, not after.",
+      "pick": false
+    },
+    {
+      "title": "Interrater reliability: the kappa statistic",
+      "author": "Mary L. McHugh",
+      "url": "https://biochemia-medica.com/en/journal/22/3/10.11613/BM.2012.031/fullArticle",
+      "type": "paper",
+      "minutes": 25,
+      "why": "Six free pages that tell you what Cohen's kappa is actually correcting for, how to compute it, and — the part that matters in a client review — why the conventional 'substantial agreement above 0.6' bands are looser than they should be for anything consequential.",
+      "pick": false
+    },
+    {
+      "title": "Testset Generation (Ragas)",
+      "author": "Ragas maintainers (Exploding Gradients)",
+      "url": "https://docs.ragas.io/en/stable/concepts/test_data_generation/",
+      "type": "docs",
+      "minutes": 25,
+      "why": "A working implementation of §2.2–2.3's generators, including the knowledge-graph approach to sampling chunk pairs — read it as a concrete alternative to the similarity-band heuristic, and note where it does and doesn't guard against unanswerable multi-hop cases.",
+      "pick": false
+    },
+    {
+      "title": "Task-Specific LLM Evals that Do & Don't Work",
+      "author": "Eugene Yan",
+      "url": "https://eugeneyan.com/writing/evals/",
+      "type": "blog",
+      "minutes": 40,
+      "why": "A survey of which metrics survive contact with a real task and which quietly don't, with a strong section on classification metrics — the reason it belongs today is that regression gates need a metric whose noise floor you can measure, and most of the popular ones fail that test.",
+      "pick": false
+    }
+  ],
+  "14": [
+    {
+      "title": "Practical BM25 — Part 2: The BM25 Algorithm and its Variables",
+      "author": "Shane Connelly (Elastic)",
+      "url": "https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables",
+      "type": "blog",
+      "minutes": 30,
+      "why": "Walks §2.2's formula one variable at a time against a toy index you can picture — set k1 to 0 and watch term frequency stop mattering, change b and watch length normalisation move — which fixes the saturation and IDF intuitions in half an hour.",
+      "pick": true
+    },
+    {
+      "title": "The Probabilistic Relevance Framework: BM25 and Beyond",
+      "author": "Stephen Robertson & Hugo Zaragoza",
+      "url": "https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf",
+      "type": "paper",
+      "minutes": 60,
+      "why": "The primary source, by BM25's own authors — read §3 (the derivation of the term-frequency and document-length components) and stop there; the rest is a research monograph and you don't need it to defend the scoring function in a design review.",
+      "pick": false
+    },
+    {
+      "title": "Retrieve & Re-Rank",
+      "author": "Nils Reimers et al. (Sentence Transformers)",
+      "url": "https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+      "type": "docs",
+      "minutes": 20,
+      "why": "The clearest short statement of §2.5's bi-encoder / cross-encoder split — one encodes query and document independently so you can pre-index, the other reads them together and can't — plus working code for the two-stage pipeline.",
+      "pick": false
+    },
+    {
+      "title": "Passage Re-ranking with BERT",
+      "author": "Rodrigo Nogueira & Kyunghyun Cho",
+      "url": "https://arxiv.org/abs/1901.04085",
+      "type": "paper",
+      "minutes": 20,
+      "why": "Four pages, and the paper that established the retrieve-then-rerank pattern everyone now ships — worth reading for the size of the gain over BM25 alone, which is the number that justifies the reranker's latency budget in §2.5.",
+      "pick": false
+    },
+    {
+      "title": "The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries",
+      "author": "Jaime Carbonell & Jade Goldstein",
+      "url": "https://www.cs.cmu.edu/~jgc/publication/The_Use_MMR_Diversity_Based_LTMIR_1998.pdf",
+      "type": "paper",
+      "minutes": 25,
+      "why": "The 1998 original of the near-duplicate fix in §2.7 — a single λ trading relevance against novelty — and it is the same crowding-out mechanism as Day 10's semantic-memory decay, so reading it once buys you both.",
+      "pick": false
+    }
+  ],
+  "15": [
+    {
+      "title": "Prompt caching",
+      "author": "Anthropic",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "type": "docs",
+      "minutes": 30,
+      "why": "Read the cache-breakpoint placement rules and the write/read pricing table together — provider prompt caching is the one cache layer of §2.5–2.6 with no analogue in your existing intuition, and its rules (prefix-only, TTL, what invalidates a cache) decide how you order a system prompt.",
+      "pick": true
+    },
+    {
+      "title": "Using server-sent events",
+      "author": "MDN Web Docs contributors (Mozilla)",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events",
+      "type": "docs",
+      "minutes": 30,
+      "why": "The SSE wire format, EventSource, custom event types and automatic reconnection with Last-Event-ID — everything §2.2's transcript assumes, including why a comment line works as a heartbeat against proxy idle timeouts.",
+      "pick": false
+    },
+    {
+      "title": "GPTCache: An Open-Source Semantic Cache for LLM Applications Enabling Faster Answers and Cost Savings",
+      "author": "Fu Bang",
+      "url": "https://aclanthology.org/2023.nlposs-1.24/",
+      "type": "paper",
+      "minutes": 25,
+      "why": "Short workshop paper laying out the semantic-cache architecture — embedding, vector store, similarity threshold, eviction — and it is the cleanest place to see why the threshold is a correctness knob, not a performance knob, which is §2.6's whole warning.",
+      "pick": false
+    },
+    {
+      "title": "Fixing retries with token buckets and circuit breakers",
+      "author": "Marc Brooker",
+      "url": "https://brooker.co.za/blog/2022/02/28/retries.html",
+      "type": "blog",
+      "minutes": 20,
+      "why": "Simulated comparison of no-retry, fixed-N retry, adaptive token bucket and circuit breaker — the reasoning transfers unchanged to a provider that returns 429s and 529s, and it tells you which of §2.4's layered-timeout-plus-retry designs actually degrades gracefully under a capacity event.",
+      "pick": false
+    },
+    {
+      "title": "Guardrails — OpenAI Agents SDK",
+      "author": "OpenAI",
+      "url": "https://openai.github.io/openai-agents-python/guardrails/",
+      "type": "docs",
+      "minutes": 15,
+      "why": "Input and output guardrails as tripwires that run in parallel with the main call — a concrete shape for §2.9, and the parallel-vs-blocking choice is precisely where the false-positive rate stops being a quality question and becomes a latency one.",
+      "pick": false
+    }
+  ],
+  "16": [
+    {
+      "title": "Inside the LLM Call: GenAI Observability with OpenTelemetry",
+      "author": "James Newton-King (OpenTelemetry blog)",
+      "url": "https://opentelemetry.io/blog/2026/genai-observability/",
+      "type": "blog",
+      "minutes": 25,
+      "why": "Exactly §2.1's argument, worked end to end: a normal HTTP trace can't tell you what the machinery decided, and the GenAI semantic conventions add the attributes that can — with a real exported trace showing where the time and tokens went.",
+      "pick": true
+    },
+    {
+      "title": "Traces",
+      "author": "OpenTelemetry authors",
+      "url": "https://opentelemetry.io/docs/concepts/signals/traces/",
+      "type": "docs",
+      "minutes": 25,
+      "why": "The vocabulary §2.2's span table assumes — span context, attributes, events, links, status, span kind — and the section on context propagation is the part you need to get trace_id threaded through async tasks and the agent's step loop.",
+      "pick": false
+    },
+    {
+      "title": "Sampling",
+      "author": "OpenTelemetry authors",
+      "url": "https://opentelemetry.io/docs/concepts/sampling/",
+      "type": "docs",
+      "minutes": 20,
+      "why": "Head vs tail sampling stated plainly, including what tail sampling costs you operationally — read it right after §2.3, because '100% for errors and low ratings, 10% otherwise' is a tail-sampling policy and you should know what it takes to implement one.",
+      "pick": false
+    },
+    {
+      "title": "Dapper, a Large-Scale Distributed Systems Tracing Infrastructure",
+      "author": "Benjamin H. Sigelman, Luiz André Barroso, Mike Burrows, Pat Stephenson, Manoj Plakal, Donald Beaver, Saul Jaspan & Chandan Shanbhag",
+      "url": "https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/",
+      "type": "paper",
+      "minutes": 50,
+      "why": "The origin of everything in §2.2, and worth reading today specifically for §4.4 on sampling — Dapper's uniform 1-in-1000 is the instrument §2.3 says is wrong for LLM traces, and seeing why they chose it makes the contrast sharp.",
+      "pick": false
+    },
+    {
+      "title": "Observability: A Manifesto",
+      "author": "Charity Majors (Honeycomb)",
+      "url": "https://www.honeycomb.io/blog/observability-a-manifesto",
+      "type": "blog",
+      "minutes": 15,
+      "why": "Fifteen minutes on the distinction that decides your whole design — pre-aggregated metrics answer questions you already knew to ask, high-cardinality events let you ask new ones — which is why §2.4 stores the full prompt instead of a hash.",
+      "pick": false
+    }
+  ]
+}

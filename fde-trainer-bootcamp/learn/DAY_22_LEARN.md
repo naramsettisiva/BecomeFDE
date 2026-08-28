@@ -518,7 +518,28 @@ and it takes twice as long if you are looking up the structure while writing it.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:22-->
+
+### If you read one thing this week
+
+**[Principles of Instruction: Research-Based Strategies That All Teachers Should Know](https://www.aft.org/sites/default/files/Rosenshine.pdf)** — Barak Rosenshine (American Educator, Spring 2012) · paper · ~35 min
+
+Ten principles, each with the evidence behind it — the closest thing to a checklist for the eight-beat lesson you're building, and it is free and short.
+
+### Then, in the order I'd take them
+
+- **[Cognitive load theory: research that teachers really need to understand](https://education.nsw.gov.au/about-us/education-data-and-research/cese/publications/literature-reviews/cognitive-load-theory)** — NSW Dept. of Education (CESE) · paper · ~40 min  
+  Why your live-coding pace loses people, stated as a mechanism — working memory holds about four chunks — rather than a platitude. This is what "too fast" actually means.
+- **[Teaching Tech Together — ch. 6 (A Lesson Design Process) and ch. 8 (Teaching as a Performance Art)](https://teachtogether.tech/en/index.html)** — Greg Wilson · docs · ~2h  
+  A whole free book on teaching programming, by the person who built Software Carpentry. Chapter 6 gives you learner personas and objectives; chapter 8 is live-coding technique. Those two chapters, not the whole book, this week.
+- **[The Carpentries Instructor Training curriculum](https://carpentries.github.io/instructor-training/)** — The Carpentries · docs · ~45 min  
+  An entire evidence-based instructor-training programme, open-licensed and readable. Skim it for the assessment mechanics — formative checks, minute cards, teaching demos — and steal the ones that fit your 60-minute lesson.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - Rosenshine, *Principles of Instruction* (2012) — ten pages, free, empirical, and the most practical
   item here. Written for schools; the mechanisms are identical.

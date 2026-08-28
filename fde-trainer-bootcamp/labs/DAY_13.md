@@ -1,6 +1,6 @@
 # Day 13 — Evals at Depth: Synthetic Data, Judges, and Regression Gates
 
-**Tue Sep 8, 2026** · Week 3 · Maps to: **Module 05 — Evals** · Backend: **local** + `[PAID]` · Est. cost: **$4–8**
+**Mon Sep 14, 2026** · Week 3 · Maps to: **Module 05 — Evals** · Backend: **local** + `[PAID]` · Est. cost: **$4–8**
 
 > **Before you start — read `learn/DAY_13_LEARN.md` (1:15).**
 > Synthetic eval data, judge calibration, the noise floor. The lab below assumes it and does not re-explain it.
@@ -42,6 +42,14 @@ wherever you are. It's the single most under-served topic in AI education right 
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Where did integration regress your system, and why?
 2. p95 cost per query — and which node dominates it?

@@ -295,7 +295,26 @@ ammunition?"*
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:21-->
+
+### If you read one thing this week
+
+**[Postmortem Culture: Learning from Failure (SRE Book, ch. 15)](https://sre.google/sre-book/postmortem-culture/)** — Google SRE · docs · ~30 min
+
+The blameless-writeup structure maps almost directly onto the case-study "hard parts" and "limitations" sections, which are the two that make it credible.
+
+### Then, in the order I'd take them
+
+- **[Writing for Engineers](https://www.heinrichhartmann.com/posts/writing/)** — Heinrich Hartmann (Apr 2022) · essay · ~25 min  
+  A working process for the kind of document you are writing today — audience first, structure second, prose last. The section on drafting from an outline is the part to actually apply.
+- **[How to Write Usefully](https://paulgraham.com/useful.html)** — Paul Graham (Feb 2020) · essay · ~15 min  
+  "Important, novel, correct" as a test — apply it to your case study's hard-parts section and most of the padding falls out.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - Amazon's six-page narrative practice, read as a document-design argument rather than a meeting
   ritual. §2.5 is the same claim.

@@ -598,12 +598,31 @@ hashes on the span and the retrieval score panel on the dashboard.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *Dapper, a Large-Scale Distributed Systems Tracing Infrastructure* — Sigelman et al., Google,
-  2010. The original. Read the sampling section specifically, then reread §2.3 and notice that the
-  LLM case inverts its central assumption: Dapper samples uniformly because the interesting
-  population is unknown, and you sample on the tail because yours is known and tiny.
+<!--reading:16-->
+
+### If you read one thing this week
+
+**[Inside the LLM Call: GenAI Observability with OpenTelemetry](https://opentelemetry.io/blog/2026/genai-observability/)** — James Newton-King (OpenTelemetry blog) · essay · ~25 min
+
+Exactly §2.1's argument, worked end to end: a normal HTTP trace can't tell you what the machinery decided, and the GenAI semantic conventions add the attributes that can — with a real exported trace showing where the time and tokens went.
+
+### Then, in the order I'd take them
+
+- **[Traces](https://opentelemetry.io/docs/concepts/signals/traces/)** — OpenTelemetry authors · docs · ~25 min  
+  The vocabulary §2.2's span table assumes — span context, attributes, events, links, status, span kind — and the section on context propagation is the part you need to get trace_id threaded through async tasks and the agent's step loop.
+- **[Sampling](https://opentelemetry.io/docs/concepts/sampling/)** — OpenTelemetry authors · docs · ~20 min  
+  Head vs tail sampling stated plainly, including what tail sampling costs you operationally — read it right after §2.3, because '100% for errors and low ratings, 10% otherwise' is a tail-sampling policy and you should know what it takes to implement one.
+- **[Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/)** — Benjamin H. Sigelman, Luiz André Barroso, Mike Burrows, Pat Stephenson, Manoj Plakal, Donald Beaver, Saul Jaspan & Chandan Shanbhag · paper · ~50 min  
+  The origin of everything in §2.2, and worth reading today specifically for §4.4 on sampling — Dapper's uniform 1-in-1000 is the instrument §2.3 says is wrong for LLM traces, and seeing why they chose it makes the contrast sharp.
+- **[Observability: A Manifesto](https://www.honeycomb.io/blog/observability-a-manifesto)** — Charity Majors (Honeycomb) · essay · ~15 min  
+  Fifteen minutes on the distinction that decides your whole design — pre-aggregated metrics answer questions you already knew to ask, high-cardinality events let you ask new ones — which is why §2.4 stores the full prompt instead of a hash.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - *Site Reliability Engineering* — Beyer et al., 2016, chapter 6 ("Monitoring Distributed Systems").
   The four golden signals and, more usefully, the argument about symptom-based versus cause-based
   alerting. §2.6's score distribution is a cause-based alert, which the chapter is sceptical of —

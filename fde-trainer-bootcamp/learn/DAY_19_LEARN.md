@@ -779,7 +779,26 @@ those sections, and the lab will not re-explain either.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:19-->
+
+### If you read one thing this week
+
+**[Shape Up — Part 1, Shaping](https://basecamp.com/shapeup)** — Ryan Singer (Basecamp) · docs · ~1h30
+
+Read "Principles of Shaping" and "Set Boundaries" — appetite-before-estimate is precisely the move behind eval-first scoping, argued better than I argue it.
+
+### Then, in the order I'd take them
+
+- **[Product management at AWS: working backwards and the PR-FAQ](https://aws.amazon.com/executive-insights/content/product-management-at-amazon/)** — AWS Executive Insights · essay · ~20 min  
+  Re-read the press-release-first mechanism as a DISCOVERY tool — the PR is a forcing function for "what changes, for whom", which is discovery area six.
+- **[How to ask good questions](https://jvns.ca/blog/good-questions/)** — Julia Evans (Dec 2016) · essay · ~15 min  
+  Short and unusually concrete on the mechanics of getting a real answer rather than a polite one — which is the whole skill in a first discovery call.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *The Mom Test* — Rob Fitzpatrick, 2013. Short, and the best thing written on why you ask about
   the past rather than the future. His rule ("talk about their life, not your idea") is §2.3 area 1

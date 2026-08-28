@@ -18,14 +18,28 @@ help:            ## Show this help
 setup:           ## One-time environment setup (venv, deps, .env, git)
 	bash scripts/setup.sh
 
+schedule:        ## Re-anchor the 24-day plan around where you actually are
+	$(PY) scripts/schedule.py
+
 git-setup:       ## One-time git + GitHub setup (identity, editor, SSH key, remote)
 	bash scripts/git_setup.sh
+
+git-push:        ## Push to github.com/naramsettisiva/BecomeFDE (checks secrets first)
+	bash scripts/push_to_github.sh
 
 git-check:       ## Pre-push safety check — is .env tracked? anything oversized?
 	@git status --short
 	@git ls-files --error-unmatch .env >/dev/null 2>&1 \
 	  && echo "  !! .env IS TRACKED — git rm --cached .env, then ROTATE the keys" \
 	  || echo "  ok  .env not tracked"
+
+html:            ## Rebuild fde-bootcamp.html from the markdown
+	$(PY) scripts/inject_reading.py
+	$(PY) scripts/build_flashcards.py
+	$(PY) scripts/build_navigator.py
+
+cards:           ## Rebuild the flashcard decks + learn/FLASHCARDS.csv (Anki import)
+	$(PY) scripts/build_flashcards.py
 
 doctor:          ## Check the local environment
 	$(PY) scripts/doctor.py
@@ -72,5 +86,5 @@ aws-models:      ## List the Bedrock models you have access to
 	  --query 'modelSummaries[?contains(modelId,`nova`)||contains(modelId,`claude`)||contains(modelId,`titan-embed`)].modelId' \
 	  --output table
 
-.PHONY: help setup git-setup git-check doctor corpus test lint cost ship \
+.PHONY: help setup schedule html cards git-setup git-push git-check doctor corpus test lint cost ship \
         aws-preflight aws-cost aws-nuke aws-nuke-dry aws-budget aws-login aws-models

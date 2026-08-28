@@ -546,16 +546,36 @@ lab makes you build, and it will not re-explain either.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:10-->
+
+### If you read one thing this week
+
+**[Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)** — Prithvi Rajasekaran, Ethan Dixon, Carly Ryan & Jeremy Hadfield (Anthropic Applied AI team) · essay · ~30 min
+
+The single best framing of §2.5's context budget as a finite resource you spend rather than a window you fill, and it names compaction, note-taking and sub-agent offload as the three strategies with the trade-off each one makes.
+
+### Then, in the order I'd take them
+
+- **[Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://www.trychroma.com/research/context-rot)** — Kelly Hong, Anton Troynikov & Jeff Huber (Chroma) · essay · ~35 min  
+  Eighteen models measured across growing inputs, including a needle-in-a-haystack variant with distractors — this is the empirical successor to Day 4's lost-in-the-middle paper and it is what makes 'more context is not free' a number rather than a slogan.
+- **[MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560)** — Charles Packer, Sarah Wooders, Kevin Lin, Vivian Fang, Shishir G. Patil, Ion Stoica & Joseph E. Gonzalez · paper · ~40 min  
+  Read §3 (the memory hierarchy and the paging interface) and skip the evaluations — it is your virtual-memory intuition applied directly to the context window, which is the fastest route from 23 years of systems experience to the working/episodic/semantic split.
+- **[Memory tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool)** — Anthropic · docs · ~20 min  
+  A memory store as a concrete file-backed API (view / create / str_replace / insert / delete) — useful because it forces the question §2.2 raises: which of the four memory types are you actually writing into it, and with what dedupe policy.
+- **[Context editing](https://platform.claude.com/docs/en/build-with-claude/context-editing)** — Anthropic · docs · ~20 min  
+  Compaction as a shipped product surface — tool-result clearing, thinking-block clearing and summary-based compaction, each with a different thing it throws away, which is exactly §2.4's 'what each strategy loses' made checkable against a real implementation.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *Lost in the Middle: How Language Models Use Long Contexts* — Liu et al., 2023. Short, and the
   U-shaped figure is the one you'll put on a slide.
 - *RULER: What's the Real Context Size of Your Long-Context Language Models?* — Hsieh et al., 2024.
   The systematic version of "advertised ≠ effective." Needle retrieval is the *easiest* of its
   categories, so treat your own heatmap as an optimistic bound.
-- *MemGPT: Towards LLMs as Operating Systems* — Packer et al., 2023. Frames the window as physical
-  memory with paging between a fast small tier and a slow large one. The OS analogy is overextended
-  in places; the paging framing is clarifying for someone with your background.
 - *Generative Agents: Interactive Simulacra of Human Behavior* — Park et al., 2023. Its memory
   stream scores retrieval on recency **plus importance plus relevance** — read it as a critique of
   the pure-similarity recall you're building today.

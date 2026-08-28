@@ -1,6 +1,6 @@
 # Day 01 — Environment, First Tokens, and the Discipline
 
-**Tue Aug 25, 2026** · Week 1 · Maps to: *pre-work* · Backend: **local** · Est. cost: **$0.00**
+**Thu Aug 27, 2026** · Week 1 · Maps to: *pre-work* · Backend: **local** · Est. cost: **$0.00**
 
 > **Before you start — read `learn/DAY_01_LEARN.md` (1:15).**
 > What a model call is, tokens, the four layers, silent failure. The lab below assumes it and does not re-explain it.

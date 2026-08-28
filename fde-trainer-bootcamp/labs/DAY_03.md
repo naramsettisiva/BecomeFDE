@@ -1,6 +1,6 @@
 # Day 03 — Embeddings and Vector Search, Built by Hand
 
-**Thu Aug 27, 2026** · Week 1 · Maps to: **Module 01 — Retrieval Foundations** · Backend: **local** · Est. cost: **$0.00–0.50**
+**Mon Aug 31, 2026** · Week 1 · Maps to: **Module 01 — Retrieval Foundations** · Backend: **local** · Est. cost: **$0.00–0.50**
 
 > **Before you start — read `learn/DAY_03_LEARN.md` (1:15).**
 > Embeddings, distance metrics, chunking, approximate indexes. The lab below assumes it and does not re-explain it.
@@ -46,6 +46,14 @@ A trainer who has only called `.similarity_search()` cannot.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 Closed book:
 

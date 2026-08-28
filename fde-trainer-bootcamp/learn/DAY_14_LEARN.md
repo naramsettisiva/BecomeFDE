@@ -614,15 +614,33 @@ near-duplicates — are exactly those sections, and the lab will not re-explain 
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *The Probabilistic Relevance Framework: BM25 and Beyond* — Robertson & Zaragoza, 2009. The
-  authoritative treatment; read the derivations of saturation and length normalisation.
+<!--reading:14-->
+
+### If you read one thing this week
+
+**[Practical BM25 — Part 2: The BM25 Algorithm and its Variables](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables)** — Shane Connelly (Elastic) · essay · ~30 min
+
+Walks §2.2's formula one variable at a time against a toy index you can picture — set k1 to 0 and watch term frequency stop mattering, change b and watch length normalisation move — which fixes the saturation and IDF intuitions in half an hour.
+
+### Then, in the order I'd take them
+
+- **[The Probabilistic Relevance Framework: BM25 and Beyond](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf)** — Stephen Robertson & Hugo Zaragoza · paper · ~1h  
+  The primary source, by BM25's own authors — read §3 (the derivation of the term-frequency and document-length components) and stop there; the rest is a research monograph and you don't need it to defend the scoring function in a design review.
+- **[Retrieve & Re-Rank](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)** — Nils Reimers et al. (Sentence Transformers) · docs · ~20 min  
+  The clearest short statement of §2.5's bi-encoder / cross-encoder split — one encodes query and document independently so you can pre-index, the other reads them together and can't — plus working code for the two-stage pipeline.
+- **[Passage Re-ranking with BERT](https://arxiv.org/abs/1901.04085)** — Rodrigo Nogueira & Kyunghyun Cho · paper · ~20 min  
+  Four pages, and the paper that established the retrieve-then-rerank pattern everyone now ships — worth reading for the size of the gain over BM25 alone, which is the number that justifies the reranker's latency budget in §2.5.
+- **[The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries](https://www.cs.cmu.edu/~jgc/publication/The_Use_MMR_Diversity_Based_LTMIR_1998.pdf)** — Jaime Carbonell & Jade Goldstein · paper · ~25 min  
+  The 1998 original of the near-duplicate fix in §2.7 — a single λ trading relevance against novelty — and it is the same crowding-out mechanism as Day 10's semantic-memory decay, so reading it once buys you both.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - *Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods* — Cormack,
   Clarke & Buettcher, SIGIR 2009. Short, and the source of the `k = 60` default.
-- *Sentence-BERT* — Reimers & Gurevych, EMNLP 2019, and *Passage Re-ranking with BERT* — Nogueira &
-  Cho, 2019. Read as a pair: the first is the clearest statement of *why* bi-encoders exist, the second
-  is the origin of the retrieve-then-rerank pattern you're building today.
 - *BEIR* — Thakur et al., NeurIPS 2021. The empirical case that BM25 remains a startlingly strong
   baseline out-of-domain. Ammunition when someone wants to delete the lexical leg.
 - *ColBERT* — Khattab & Zaharia, SIGIR 2020. The middle ground: per-token vectors, late interaction,

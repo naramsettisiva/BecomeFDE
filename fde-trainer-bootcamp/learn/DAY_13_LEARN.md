@@ -510,7 +510,30 @@ exactly those sections, and the lab will not re-explain either.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:13-->
+
+### If you read one thing this week
+
+**[Using LLM-as-a-Judge For Evaluation: A Complete Guide](https://hamel.dev/blog/posts/llm-judge/)** — Hamel Husain · essay · ~45 min
+
+The 'critique shadowing' loop is judge calibration done properly — a domain expert grades a sample, you measure agreement, you fix the prompt, you re-measure — and the insistence on binary pass/fail with a written critique is the single change that most improves a judge you already have.
+
+### Then, in the order I'd take them
+
+- **[Who Validates the Validators? Aligning LLM-Assisted Evaluation of LLM Outputs with Human Preferences](https://arxiv.org/abs/2404.12272)** — Shreya Shankar, J.D. Zamfirescu-Pereira, Björn Hartmann, Aditya G. Parameswaran & Ian Arawjo · paper · ~40 min  
+  Read the sections on criteria drift and on the EvalGen interface — the finding that people only discover their real grading criteria by grading outputs is why §2.6's calibration set has to be built before the rubric is frozen, not after.
+- **[Interrater reliability: the kappa statistic](https://biochemia-medica.com/en/journal/22/3/10.11613/BM.2012.031/fullArticle)** — Mary L. McHugh · paper · ~25 min  
+  Six free pages that tell you what Cohen's kappa is actually correcting for, how to compute it, and — the part that matters in a client review — why the conventional 'substantial agreement above 0.6' bands are looser than they should be for anything consequential.
+- **[Testset Generation (Ragas)](https://docs.ragas.io/en/stable/concepts/test_data_generation/)** — Ragas maintainers (Exploding Gradients) · docs · ~25 min  
+  A working implementation of §2.2–2.3's generators, including the knowledge-graph approach to sampling chunk pairs — read it as a concrete alternative to the similarity-band heuristic, and note where it does and doesn't guard against unanswerable multi-hop cases.
+- **[Task-Specific LLM Evals that Do & Don't Work](https://eugeneyan.com/writing/evals/)** — Eugene Yan · essay · ~40 min  
+  A survey of which metrics survive contact with a real task and which quietly don't, with a strong section on classification metrics — the reason it belongs today is that regression gates need a metric whose noise floor you can measure, and most of the popular ones fail that test.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *A Coefficient of Agreement for Nominal Scales* — Cohen, 1960. Four pages; the chance-correction
   argument is worth the original.

@@ -1,6 +1,6 @@
 # Day 04 — RAG v1, End to End
 
-**Fri Aug 28, 2026** · Week 1 · Maps to: **Module 01 — Retrieval Foundations** · Backend: **local** (+ optional `[PAID]` comparison) · Est. cost: **$0.00–1.00**
+**Tue Sep 1, 2026** · Week 1 · Maps to: **Module 01 — Retrieval Foundations** · Backend: **local** (+ optional `[PAID]` comparison) · Est. cost: **$0.00–1.00**
 
 > **Before you start — read `learn/DAY_04_LEARN.md` (1:15).**
 > The four-clause RAG contract, prompt assembly, verifiable citations. The lab below assumes it and does not re-explain it.
@@ -44,6 +44,14 @@ this one line and watch the answer get worse."
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 Closed book:
 

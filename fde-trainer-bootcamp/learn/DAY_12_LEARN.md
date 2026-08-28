@@ -393,11 +393,29 @@ is the review itself, and neither re-explains the other.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *The Tail at Scale* — Dean & Barroso, CACM 2013. The canonical treatment of why fan-out amplifies
-  tail latency, and the techniques (hedged requests, tied requests) for fighting it. Written about
-  search backends; every word applies to your supervisor.
+<!--reading:12-->
+
+### If you read one thing this week
+
+**[Building A Generative AI Platform](https://huyenchip.com/2024/07/25/genai-platform.html)** — Chip Huyen · essay · ~45 min
+
+The closest thing in print to the architecture review you're being asked to produce — context enhancement, guardrails, router/gateway, three cache layers, observability and orchestration, built up one layer at a time with the failure each layer answers.
+
+### Then, in the order I'd take them
+
+- **[The Tail at Scale](https://www.barroso.org/publications/TheTailAtScale.pdf)** — Jeffrey Dean & Luiz André Barroso · paper · ~30 min  
+  You almost certainly know this one, and today is when to re-read it with agents in mind: an LLM pipeline is a fan-out of slow, variable-latency components, so the tail-amplification argument applies directly to §2.3's p50-vs-p95 split.
+- **[How NOT to Measure Latency](https://www.infoq.com/presentations/latency-response-time/)** — Gil Tene (QCon San Francisco) · video · ~55 min  
+  The definitive demolition of averaging percentiles and of measuring only what your load generator managed to send — watch it before you put a single latency number in front of a client, because the coordinated-omission trap is easy to fall into with agent traces.
+- **[Token & Cost Tracking](https://langfuse.com/docs/observability/features/token-and-cost-tracking)** — Langfuse · docs · ~15 min  
+  Shows what per-node cost attribution actually requires — usage captured per generation, prices resolved per model version, costs rolled up the trace — which is the plumbing behind §2.4's per-node cost table.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - The **Google SRE book**, the chapters on SLOs and on monitoring distributed systems. You have the
   instincts already; this gives you the vocabulary a client's platform team will use back at you.
 - OpenTelemetry's **GenAI semantic conventions** (still evolving) — worth skimming for the field

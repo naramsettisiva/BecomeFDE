@@ -695,7 +695,30 @@ will not re-explain any of them.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:15-->
+
+### If you read one thing this week
+
+**[Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)** — Anthropic · docs · ~30 min
+
+Read the cache-breakpoint placement rules and the write/read pricing table together — provider prompt caching is the one cache layer of §2.5–2.6 with no analogue in your existing intuition, and its rules (prefix-only, TTL, what invalidates a cache) decide how you order a system prompt.
+
+### Then, in the order I'd take them
+
+- **[Using server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)** — MDN Web Docs contributors (Mozilla) · docs · ~30 min  
+  The SSE wire format, EventSource, custom event types and automatic reconnection with Last-Event-ID — everything §2.2's transcript assumes, including why a comment line works as a heartbeat against proxy idle timeouts.
+- **[GPTCache: An Open-Source Semantic Cache for LLM Applications Enabling Faster Answers and Cost Savings](https://aclanthology.org/2023.nlposs-1.24/)** — Fu Bang · paper · ~25 min  
+  Short workshop paper laying out the semantic-cache architecture — embedding, vector store, similarity threshold, eviction — and it is the cleanest place to see why the threshold is a correctness knob, not a performance knob, which is §2.6's whole warning.
+- **[Fixing retries with token buckets and circuit breakers](https://brooker.co.za/blog/2022/02/28/retries.html)** — Marc Brooker · essay · ~20 min  
+  Simulated comparison of no-retry, fixed-N retry, adaptive token bucket and circuit breaker — the reasoning transfers unchanged to a provider that returns 429s and 529s, and it tells you which of §2.4's layered-timeout-plus-retry designs actually degrades gracefully under a capacity event.
+- **[Guardrails — OpenAI Agents SDK](https://openai.github.io/openai-agents-python/guardrails/)** — OpenAI · docs · ~15 min  
+  Input and output guardrails as tripwires that run in parallel with the main call — a concrete shape for §2.9, and the parallel-vs-blocking choice is precisely where the false-positive rate stops being a quality question and becomes a latency one.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *Release It!* — Michael Nygard, 2nd ed. 2018. Timeouts, circuit breakers, bulkheads. Pre-dates all of
   this, and every pattern in §2.4 is in it.
@@ -703,16 +726,12 @@ will not re-explain any of them.
   overload and on cascading failures are the argument behind §2.4's shed-don't-queue rule. Free online.
 - *Timeouts, retries and backoff with jitter* — AWS Builders' Library. Why an unbounded retry budget
   defeats a carefully chosen timeout.
-- The WHATWG HTML standard's **Server-sent events** section — six pages, and it settles the framing
-  questions (`event:`, `data:`, `id:`, `retry:`, comment heartbeats) that blog posts get wrong.
 - *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect
   Prompt Injection* — Greshake et al., 2023. The indirect case — injection arriving inside a retrieved
   document — which is the one your RAG system is exposed to. Pair with the *OWASP Top 10 for LLM
   Applications* as a checklist to argue with, and with Simon Willison's running account since 2022;
   his conclusion that no prompt-level defence is reliable, so the mitigation must be architectural, is
   worth internalising before you promise a client a detector.
-- Your provider's prompt-caching documentation. Discount rates, minimum cacheable prefix length, TTL,
-  and whether cache *writes* cost extra all differ, and §2.7's economics change with them.
 
 ---
 

@@ -1,68 +1,69 @@
 # Progress
 
-Tick as you go. Five hours a day, 24 days, Sundays off.
+Tick as you go. Five hours a day, 24 working days.
+Runs Thu Aug 27 → Tue Sep 29.
 
 Each day is **learn then build**: read `learn/DAY_NN_LEARN.md` and take its self-check
 before opening the lab. The sub-line under each day tracks that.
 
-## Week 1 — Foundations (Aug 25–31)
+## Week 1 — Foundations (Aug 27 – Sep 3)
 
-- [ ] **Day 01** · Tue Aug 25 · Environment, first tokens, the discipline
+- [ ] **Day 01** · Thu Aug 27 · Environment, first tokens, the discipline
   - [ ] read `learn/DAY_01_LEARN.md` + self-check
-- [ ] **Day 02** · Wed Aug 26 · Python for AI engineers: structure, async, failure
+- [ ] **Day 02** · Fri Aug 28 · Python for AI engineers: structure, async, failure
   - [ ] read `learn/DAY_02_LEARN.md` + self-check
-- [ ] **Day 03** · Thu Aug 27 · Embeddings and vector search, by hand
+- [ ] **Day 03** · Mon Aug 31 · Embeddings and vector search, by hand
   - [ ] read `learn/DAY_03_LEARN.md` + self-check
-- [ ] **Day 04** · Fri Aug 28 · RAG v1, end to end
+- [ ] **Day 04** · Tue Sep 1 · RAG v1, end to end
   - [ ] read `learn/DAY_04_LEARN.md` + self-check
-- [ ] **Day 05** · Sat Aug 29 · Evals: making "it seems better" into a number
+- [ ] **Day 05** · Wed Sep 2 · Evals: making "it seems better" into a number
   - [ ] read `learn/DAY_05_LEARN.md` + self-check
-- [ ] **Day 06** · Mon Aug 31 · **Capstone** — ship it, demo it, teach it
+- [ ] **Day 06** · Thu Sep 3 · **Capstone** — ship it, demo it, teach it
   - [ ] read `learn/DAY_06_LEARN.md` + self-check
 
-## Week 2 — Agents (Sep 1–7)
+## Week 2 — Agents (Sep 4 – Sep 11)
 
-- [ ] **Day 07** · Tue Sep 1 · Tool calling and the agent loop, from first principles
+- [ ] **Day 07** · Fri Sep 4 · Tool calling and the agent loop, from first principles
   - [ ] read `learn/DAY_07_LEARN.md` + self-check
-- [ ] **Day 08** · Wed Sep 2 · Agentic RAG: routing, decomposition, self-correction
+- [ ] **Day 08** · Mon Sep 7 · Agentic RAG: routing, decomposition, self-correction
   - [ ] read `learn/DAY_08_LEARN.md` + self-check
-- [ ] **Day 09** · Thu Sep 3 · Multi-agent: supervisors, handoffs, deep research
+- [ ] **Day 09** · Tue Sep 8 · Multi-agent: supervisors, handoffs, deep research
   - [ ] read `learn/DAY_09_LEARN.md` + self-check
-- [ ] **Day 10** · Fri Sep 4 · Memory and context engineering
+- [ ] **Day 10** · Wed Sep 9 · Memory and context engineering
   - [ ] read `learn/DAY_10_LEARN.md` + self-check
-- [ ] **Day 11** · Sat Sep 5 · MCP, tools, and skills
+- [ ] **Day 11** · Thu Sep 10 · MCP, tools, and skills
   - [ ] read `learn/DAY_11_LEARN.md` + self-check
-- [ ] **Day 12** · Mon Sep 7 · **Capstone** — the agentic system, integrated
+- [ ] **Day 12** · Fri Sep 11 · **Capstone** — the agentic system, integrated
   - [ ] read `learn/DAY_12_LEARN.md` + self-check
 
-## Week 3 — Production (Sep 8–14)
+## Week 3 — Production (Sep 14 – Sep 21)
 
-- [ ] **Day 13** · Tue Sep 8 · Evals at depth: synthetic data, judges, regression gates
+- [ ] **Day 13** · Mon Sep 14 · Evals at depth: synthetic data, judges, regression gates
   - [ ] read `learn/DAY_13_LEARN.md` + self-check
-- [ ] **Day 14** · Wed Sep 9 · Advanced retrieval: hybrid, rerank, context engineering
+- [ ] **Day 14** · Tue Sep 15 · Advanced retrieval: hybrid, rerank, context engineering
   - [ ] read `learn/DAY_14_LEARN.md` + self-check
-- [ ] **Day 15** · Thu Sep 10 · Production I: serving, streaming, caching, guardrails
+- [ ] **Day 15** · Wed Sep 16 · Production I: serving, streaming, caching, guardrails
   - [ ] read `learn/DAY_15_LEARN.md` + self-check
-- [ ] **Day 16** · Fri Sep 11 · Observability: tracing, metrics, the feedback loop
+- [ ] **Day 16** · Thu Sep 17 · Observability: tracing, metrics, the feedback loop
   - [ ] read `learn/DAY_16_LEARN.md` + self-check
-- [ ] **Day 17** · Sat Sep 12 · Deployment: Docker, cloud, CI/CD, handover
+- [ ] **Day 17** · Fri Sep 18 · Deployment: Docker, cloud, CI/CD, handover
   - [ ] read `learn/DAY_17_LEARN.md` + self-check
-- [ ] **Day 18** · Mon Sep 14 · Production II: cost, performance, adversarial security
+- [ ] **Day 18** · Mon Sep 21 · Production II: cost, performance, adversarial security
   - [ ] read `learn/DAY_18_LEARN.md` + self-check
 
-## Week 4 — The craft (Sep 15–21)
+## Week 4 — The craft (Sep 22 – Sep 29)
 
-- [ ] **Day 19** · Tue Sep 15 · The FDE craft: discovery, scoping, the first two weeks
+- [ ] **Day 19** · Tue Sep 22 · The FDE craft: discovery, scoping, the first two weeks
   - [ ] read `learn/DAY_19_LEARN.md` + self-check
-- [ ] **Day 20** · Wed Sep 16 · **Capstone build 1** — skeleton to working
+- [ ] **Day 20** · Wed Sep 23 · **Capstone build 1** — skeleton to working
   - [ ] read `learn/DAY_20_LEARN.md` + self-check
-- [ ] **Day 21** · Thu Sep 17 · **Capstone build 2** — harden, evaluate, package
+- [ ] **Day 21** · Thu Sep 24 · **Capstone build 2** — harden, evaluate, package
   - [ ] read `learn/DAY_21_LEARN.md` + self-check
-- [ ] **Day 22** · Fri Sep 18 · The trainer craft: designing curriculum that sticks
+- [ ] **Day 22** · Fri Sep 25 · The trainer craft: designing curriculum that sticks
   - [ ] read `learn/DAY_22_LEARN.md` + self-check
-- [ ] **Day 23** · Sat Sep 19 · Deliver it live: teaching under real conditions
+- [ ] **Day 23** · Mon Sep 28 · Deliver it live: teaching under real conditions
   - [ ] read `learn/DAY_23_LEARN.md` + self-check
-- [ ] **Day 24** · Mon Sep 21 · Demo day, portfolio, and the 90-day launch
+- [ ] **Day 24** · Tue Sep 29 · Demo day, portfolio, and the 90-day launch
   - [ ] read `learn/DAY_24_LEARN.md` + self-check
 
 ---
@@ -101,13 +102,13 @@ Record every scorecard run so the curve is visible on Day 24.
 
 | Date | Day | Recall@5 | Faithfulness | Citation verified | Cost/query | p95 latency | Note |
 |---|---|---|---|---|---|---|---|
-| Aug 29 | 05 | | | | | | first baseline |
-| Sep 2 | 08 | | | | | | agentic patterns |
-| Sep 7 | 12 | | | | | | integrated |
-| Sep 8 | 13 | | | | | | 250-case suite |
-| Sep 9 | 14 | | | | | | 200-doc corpus |
-| Sep 14 | 18 | | | | | | post-optimisation |
-| Sep 17 | 21 | | | | | | capstone final |
+| Sep 2 | 05 | | | | | | first baseline |
+| Sep 7 | 08 | | | | | | agentic patterns |
+| Sep 11 | 12 | | | | | | integrated |
+| Sep 14 | 13 | | | | | | 250-case suite |
+| Sep 15 | 14 | | | | | | 200-doc corpus |
+| Sep 21 | 18 | | | | | | post-optimisation |
+| Sep 24 | 21 | | | | | | capstone final |
 
 ---
 

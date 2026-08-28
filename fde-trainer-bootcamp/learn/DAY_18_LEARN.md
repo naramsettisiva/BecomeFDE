@@ -688,12 +688,29 @@ sections are the ones it assumes and will not re-explain.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect
-  Prompt Injection* — Greshake et al., 2023. The paper that named the class and demonstrated it
-  end-to-end against real integrated applications. Read the threat-model section; the taxonomy of
-  delivery vectors is directly reusable in a client conversation.
+<!--reading:18-->
+
+### If you read one thing this week
+
+**[Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/abs/2302.12173)** — Greshake, Abdelnabi, Mishra, Endres, Holz, Fritz (arXiv 2302.12173) · paper · ~45 min
+
+The paper that named the attack your RAG system is structurally exposed to; read §3 and §4 for the taxonomy, skip the rest on a first pass.
+
+### Then, in the order I'd take them
+
+- **[Everything tagged prompt-injection (161 posts, 2022–2026)](https://simonwillison.net/tags/prompt-injection/)** — Simon Willison · essay · ~1h  
+  Willison coined the term and has tracked every proposed defence since; skim the last two years to see which mitigations have actually held up and which were wishful. Look for the "lethal trifecta" framing — private data + untrusted content + exfiltration — it is the cleanest way to explain the risk to a client.
+- **[Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180)** — Kwon, Li, Zhuang, Sheng, Zheng, Yu, Gonzalez, Zhang, Stoica (SOSP '23) · paper · ~40 min  
+  If you self-host, throughput is decided by KV-cache management — this is the paper behind vLLM and the reason your Day 18 break-even arithmetic needs a measured tokens/sec, not a vendor number.
+- **[Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)** — Anthropic · docs · ~15 min  
+  The single highest-leverage cost lever in the course — cache reads at 0.1× input price — and the mechanics dictate prompt ORDER: stable prefix first. That is a design constraint, not an optimisation.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - The **OWASP Top 10 for LLM Applications**. Prompt injection sits at the top and the entries map
   closely onto §2.8's five classes. Worth reading because your client's security team has probably
   read it, and speaking their vocabulary shortens a review.
@@ -710,9 +727,6 @@ sections are the ones it assumes and will not re-explain.
 - NIST's adversarial machine learning taxonomy report (the AI 100-2 series) is the most
   citation-friendly taxonomy for a formal security review — check for the current revision, as it
   has been updated more than once.
-- Your provider's prompt-caching documentation, read carefully for three specific things: whether
-  caching is automatic or must be marked, the minimum cacheable prefix length, and the TTL. §2.3's
-  arithmetic changes materially depending on all three, and all three drift.
 - vLLM's docs on continuous batching and prefix caching, if the self-hosting path is live for your
   client. The break-even in §3 Q4 assumed a duty-cycle correction; those two features are what
   determine how bad the correction actually is.

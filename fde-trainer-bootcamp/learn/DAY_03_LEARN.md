@@ -419,14 +419,33 @@ of Day 4 are built on.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *Efficient and robust approximate nearest neighbor search using HNSW graphs* (Malkov &
-  Yashunin, 2016) — read §3 and the figures. The skip-list intuition is right there.
+<!--reading:03-->
+
+### If you read one thing this week
+
+**[Embeddings: What they are and why they matter](https://simonwillison.net/2023/Oct/23/embeddings/)** — Simon Willison (PyBay 2023) · video · ~40 min
+
+The best non-ML-background first encounter with §2.1 and §2.2 — what a vector is, what a dimension is not, and a live demo of related-content search; the article stands alone if you skip the 38-minute embedded video.
+
+### Then, in the order I'd take them
+
+- **[Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs](https://arxiv.org/abs/1603.09320)** — Yu. A. Malkov & D. A. Yashunin (2016, rev. 2018) · paper · ~50 min  
+  Read §3 and the figures only — the skip-list intuition is right there, and as a distributed-systems engineer you will recognise the recall/latency knob (`efSearch`) as the same class of tradeoff you already tune elsewhere, which is §2.8's whole point.
+- **[Embedding Projector](https://projector.tensorflow.org/)** — Smilkov, Thorat, Nicholson et al. (TensorFlow) · interactive · ~15 min  
+  Load the built-in Word2Vec set and search a few terms — seeing nearest neighbours in a projected space is the fastest way to feel §2.4's topical-versus-propositional gap before you go and measure it in the lab.
+- **[Chunking Strategies for LLM Applications](https://www.pinecone.io/learn/chunking-strategies/)** — Roie Schwaber-Cohen & Arjun Patel (Pinecone) · essay · ~20 min  
+  A practical survey of the chunking options you will bake off in the lab — fixed, recursive, semantic, contextual — and it agrees with §2.6 that chunking is a retrieval decision rather than a preprocessing detail.
+- **[Introducing Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval)** — Anthropic (engineering blog, 2024) · essay · ~25 min  
+  The generalised form of §2.7's heading-path prefix trick with measured numbers (35% / 49% / 67% failure reduction as you stack embeddings, BM25 and reranking) — those are the figures to quote when someone asks whether prefixing is worth the index cost.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - *Lost in the Middle: How Language Models Use Long Contexts* (Liu et al., 2023) — you'll measure
   this yourself on Day 10, but the paper is short and the U-shaped curve is memorable.
-- *Contextual Retrieval* (Anthropic engineering blog, 2024) — the general form of §2.7's
-  heading-prefix trick, with measured gains.
 - MTEB leaderboard — how embedding models are benchmarked, and worth a skeptical read: the tasks
   are not your task, and leaderboard position rarely survives contact with a domain corpus.
 

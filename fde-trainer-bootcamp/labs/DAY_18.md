@@ -1,6 +1,6 @@
 # Day 18 — Production II: Cost, Performance, and Adversarial Security
 
-**Mon Sep 14, 2026** · Week 3 · Maps to: **Module 09 — Production II** + **Module 10 — The Edge** · Backend: **all** · Est. cost: **$5–10**
+**Mon Sep 21, 2026** · Week 3 · Maps to: **Module 09 — Production II** + **Module 10 — The Edge** · Backend: **all** · Est. cost: **$5–10**
 
 > **Before you start — read `learn/DAY_18_LEARN.md` (1:15).**
 > Cost levers, self-hosting break-even, indirect injection. The lab below assumes it and does not re-explain it.
@@ -42,6 +42,14 @@ cohort.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. What's the first question to ask about a client's network before designing anything?
 2. Why must tenant filtering live in the retriever query?

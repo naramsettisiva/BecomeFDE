@@ -1,4 +1,4 @@
-# AWS Lane — Week 3 (Sep 8–14)
+# AWS Lane — Week 3 (Sep 14 – Sep 21)
 
 **macOS. Est. AWS spend this week: $10–18 — the heaviest week. Est. added time: 5h across six days.**
 

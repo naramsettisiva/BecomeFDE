@@ -1,6 +1,6 @@
 # Day 22 — The Trainer Craft: Designing Curriculum That Sticks
 
-**Fri Sep 18, 2026** · Week 4 · Maps to: **the trainer role** · Backend: n/a · Est. cost: **$0–1**
+**Fri Sep 25, 2026** · Week 4 · Maps to: **the trainer role** · Backend: n/a · Est. cost: **$0–1**
 
 > **Before you start — read `learn/DAY_22_LEARN.md` (1:15).**
 > Failure-organised curriculum, four techniques, assessment. The lab below assumes it and does not re-explain it.

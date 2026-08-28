@@ -1,6 +1,6 @@
 # Day 15 — Production I: Serving, Streaming, Caching, Guardrails
 
-**Thu Sep 10, 2026** · Week 3 · Maps to: **Module 08 — Production I** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
+**Wed Sep 16, 2026** · Week 3 · Maps to: **Module 08 — Production I** · Backend: **local** + `[PAID]` · Est. cost: **$2–4**
 
 > **Before you start — read `learn/DAY_15_LEARN.md` (1:15).**
 > The serving contract, three cache layers, guardrail false positives. The lab below assumes it and does not re-explain it.
@@ -43,6 +43,14 @@ most requested and least available things in AI education.
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 1. Why RRF instead of score blending?
 2. Which technique gave the biggest recall jump, and what did it cost in latency?

@@ -534,7 +534,30 @@ asks you to write the auth-and-tenancy note in the stretch, and it will not re-e
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:11-->
+
+### If you read one thing this week
+
+**[Architecture overview (Model Context Protocol)](https://modelcontextprotocol.io/docs/learn/architecture)** — Model Context Protocol maintainers / Anthropic · docs · ~25 min
+
+The primary source for §2.2 and §2.3 in one page — host/client/server with the 1:1 client-per-server rule stated outright, JSON-RPC 2.0 on the wire, and stdio vs streamable HTTP characterised the way you'd characterise any transport.
+
+### Then, in the order I'd take them
+
+- **[Understanding MCP servers (server concepts)](https://modelcontextprotocol.io/docs/learn/server-concepts)** — Model Context Protocol maintainers / Anthropic · docs · ~25 min  
+  Carries the table that makes the three primitives make sense — tools are model-controlled, resources application-controlled, prompts user-controlled — which is the distinction §2.4 hangs everything on and the one most MCP explainers get wrong.
+- **[Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)** — Anthropic · essay · ~10 min  
+  The original announcement, and worth ten minutes purely for the framing you'll reuse in client meetings: the N×M problem of §2.1 stated by the people who chose to solve it with a protocol rather than an SDK.
+- **[Build an MCP server (quickstart tutorial)](https://modelcontextprotocol.io/docs/develop/build-server)** — Model Context Protocol maintainers / Anthropic · interactive · ~1h  
+  An hour with a real stdio server and a real host beats any amount of reading about the protocol — you'll hit the lifecycle, the tool schema and the 'never log to stdout on stdio' rule yourself, which is how those stop being trivia.
+- **[Equipping agents for the real world with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)** — Barry Zhang, Keith Lazuka & Mahesh Murag (Anthropic) · essay · ~25 min  
+  Skills as portable procedural capability — a folder of instructions and scripts loaded by progressive disclosure — which is §2.8's contrast with MCP: MCP moves connections, skills move know-how, and the two solve different halves of the same problem.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - The **MCP specification** at `modelcontextprotocol.io` — read the primitives section and the
   lifecycle/initialization section. An hour, and it's short enough to actually finish.

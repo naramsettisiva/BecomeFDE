@@ -380,22 +380,38 @@ a demo you can perform cold and a lesson someone else could learn from.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:06-->
+
+### If you read one thing this week
+
+**[How to Speak](https://ocw.mit.edu/courses/res-tll-005-how-to-speak-january-iap-2018/pages/how-to-speak/)** — Patrick Henry Winston (MIT OpenCourseWare, IAP 2018) · video · ~1h
+
+Forty years of MIT's best lecture on the mechanics §2.6 is about — how to open, how to use the board, when to use slides and when not to, how to end — and it is heuristics you can apply to your teach-back this afternoon rather than theory.
+
+### Then, in the order I'd take them
+
+- **[The secret structure of great talks](https://www.ted.com/talks/nancy_duarte_the_secret_structure_of_great_talks)** — Nancy Duarte (TEDxEast, 2011) · video · ~18 min  
+  The sparkline analysis in eighteen minutes — the what-is versus what-could-be oscillation is the shape underneath §2.3's seven beats, and seeing it drawn once makes the beat list stop feeling arbitrary.
+- **[Inventing on Principle (CUSEC 2012)](https://archive.org/details/vimeo-36579366)** — Bret Victor · video · ~55 min  
+  The reference implementation of 'show, then explain' — time how long he lets the first demo run before he says a word about it, then compare that to how long you wait in your own recording.
+- **[Simple Made Easy (Strange Loop 2011)](https://www.infoq.com/presentations/Simple-Made-Easy/)** — Rich Hickey · video · ~1h02  
+  Watch once for content and once with a stopwatch on the slides — he holds essentially one frame for the whole hour, which is the cleanest available demonstration that the argument, not the deck, carries a technical talk.
+- **[The Pretesting Effect: Do Unsuccessful Retrieval Attempts Enhance Learning?](https://learninglab.uchicago.edu/Pre-Testing_files/RichlandKornellKao.pdf)** — Lindsey E. Richland, Nate Kornell & Liche Sean Kao (JEP:Applied, 2009) · paper · ~40 min  
+  Fifteen pages of evidence for §2.5's hook — asking a question people will get wrong before you teach the answer beats giving them extra study time, and Experiments 1 and 5 are more surprising than any summary of them.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *Make It Stick: The Science of Successful Learning* — Brown, Roediger & McDaniel (2014). The
   accessible treatment of retrieval practice, spacing and desirable difficulty — the research
   basis for this whole bootcamp, including the warm-up block you keep wanting to skip.
-- *The Pretesting Effect: Do Unsuccessful Retrieval Attempts Enhance Learning?* — Richland,
-  Kornell & Kao (2009). The evidence for §2.5's hook, and more surprising than the summary.
 - **Cognitive Load Theory** — John Sweller, 1988 onward. The worked-example effect is the direct
   justification for §3 of every module in this course.
 - *Resonate* — Nancy Duarte (2010). Presentation structure as architecture rather than taste. Skim
   the sparkline analysis; ignore the design chapters.
-- *Simple Made Easy* — Rich Hickey (Strange Loop, 2011). Watch once for content, then again with a
-  stopwatch, watching him hold a single frame for fifty minutes. The cleanest demonstration of
-  §2.5's part 2 available.
-- *Inventing on Principle* — Bret Victor (CUSEC, 2012). The reference implementation of "show,
-  then explain." Note how long he lets a demo run before saying anything.
 
 ---
 

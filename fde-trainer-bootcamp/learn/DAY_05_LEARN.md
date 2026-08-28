@@ -465,7 +465,30 @@ for the rest of the course.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:05-->
+
+### If you read one thing this week
+
+**[Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/)** — Hamel Husain · essay · ~45 min
+
+The practitioner version of §2.1's ladder, with a real case study — it is emphatic that removing friction from looking at your own traces is the whole job, which is exactly the hand-review pass that is today's lab.
+
+### Then, in the order I'd take them
+
+- **[Introduction to Information Retrieval, Chapter 8: Evaluation in Information Retrieval](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-in-information-retrieval-1.html)** — Manning, Raghavan & Schütze (Cambridge University Press, 2008) · docs · ~50 min  
+  The authoritative free source for §2.3 — read §8.3 (precision/recall, MAP), §8.4 (ranked evaluation and nDCG) and especially §8.5, which is where kappa for inter-assessor agreement comes from and where you learn IR has been arguing about golden sets since before you started your career.
+- **[Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685)** — Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li, Li, Xing, Zhang, Gonzalez & Stoica (NeurIPS 2023 D&B) · paper · ~45 min  
+  The source of the judge-human agreement numbers you will be asked for, plus measured effect sizes for position and verbosity bias — read §3 (limitations of LLM judges) if you read nothing else, since it is §2.5's four lies with data attached.
+- **[Large Language Models are not Fair Evaluators](https://arxiv.org/abs/2305.17926)** — Wang, Li, Chen, Cai, Zhu, Lin, Cao, Liu, Liu & Sui (2023) · paper · ~25 min  
+  Short and blunt on position bias, and it hands you the swap-and-average calibration fix — a five-line change to your judge harness that you should make before you trust a single pairwise result.
+- **[RAGAS: Automated Evaluation of Retrieval Augmented Generation](https://arxiv.org/abs/2309.15217)** — Shahul Es, Jithin James, Luis Espinosa-Anke & Steven Schockaert (2023) · paper · ~30 min  
+  Read this after you have built your own judges, not before — then check whether its `faithfulness` claim decomposition matches the one you assumed, because the mismatch is the lesson.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *Cumulated Gain-Based Evaluation of IR Techniques* — Järvelin & Kekäläinen (2002). The nDCG
   paper; §4 has the reasoning behind the logarithmic discount.
@@ -473,10 +496,6 @@ for the rest of the course.
   the κ bands everyone quotes. Worth seeing how casually the thresholds were proposed.
 - *High Agreement But Low Kappa* — Feinstein & Cicchetti (1990). The reason you report per-class
   recall next to κ.
-- *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena* — Zheng et al. (2023). Judge-human
-  agreement, plus position and verbosity bias with measured effect sizes.
-- *Large Language Models are not Fair Evaluators* — Wang et al. (2023). Position bias and the
-  swap-and-average fix.
 - *RAGAS* — Es et al. (2023). Read **after** building your own judges, then read the source for
   `faithfulness` and check whether its claim decomposition matches what you assumed.
 

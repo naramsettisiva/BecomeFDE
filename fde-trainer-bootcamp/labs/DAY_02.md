@@ -1,6 +1,6 @@
 # Day 02 — Python for AI Engineers: Structure, Async, and Failure
 
-**Wed Aug 26, 2026** · Week 1 · Maps to: *pre-work* · Backend: **local** · Est. cost: **$0.00–0.20**
+**Fri Aug 28, 2026** · Week 1 · Maps to: *pre-work* · Backend: **local** · Est. cost: **$0.00–0.20**
 
 > **Before you start — read `learn/DAY_02_LEARN.md` (1:15).**
 > Structured output, async fan-out, resilience primitives. The lab below assumes it and does not re-explain it.
@@ -47,6 +47,14 @@ It is the highest-leverage day of Week 1, because every remaining lab assumes it
 ---
 
 ## Block 0 — Warm-up (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 Closed-book, in `notebooks/day02_warmup.md`:
 

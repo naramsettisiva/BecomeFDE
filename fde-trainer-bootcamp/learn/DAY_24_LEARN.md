@@ -554,7 +554,28 @@ the plan, and both go faster if the surfaces and the deadline asymmetry are alre
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:24-->
+
+### If you read one thing this week
+
+**[Some blogging myths](https://jvns.ca/blog/2023/06/05/some-blogging-myths/)** — Julia Evans (Jun 2023) · essay · ~12 min
+
+Kills the two beliefs most likely to stop you publishing — that it must be original and that it must be long — on the day you're deciding what to write.
+
+### Then, in the order I'd take them
+
+- **[My approach to running a link blog](https://simonwillison.net/2024/Dec/22/link-blog/)** — Simon Willison (Dec 2024) · essay · ~15 min  
+  A working model of low-stakes, high-value technical writing from someone who has done it daily since 2003 — the realistic shape of a publishing habit you can keep past week two.
+- **[Learn In Public](https://www.swyx.io/learn-in-public)** — swyx (Jun 2018) · essay · ~15 min  
+  The argument for making your learning exhaust visible, which is precisely what your 90-day plan is. "Create value for past-you" is also the best one-line description of what a trainer does.
+- **[Don't Call Yourself A Programmer, And Other Career Advice](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)** — Patrick McKenzie (Oct 2011) · essay · ~30 min  
+  Dated in its examples and still the sharpest thing written on framing your work in terms of what it did for the business — which is exactly the case-study and LinkedIn problem.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - Read three case studies from engineers whose work you rate, and time how long it takes to learn
   what problem was solved. If it's over fifteen seconds, note what got in the way — it will be the

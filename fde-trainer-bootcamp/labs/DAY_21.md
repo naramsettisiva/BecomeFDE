@@ -1,6 +1,6 @@
 # Day 21 — Capstone Build, Day 2: Harden, Evaluate, Package
 
-**Thu Sep 17, 2026** · Week 4 · Maps to: **Modules 07 + 08 + 09** · Backend: **all** · Est. cost: **$5–10**
+**Thu Sep 24, 2026** · Week 4 · Maps to: **Modules 07 + 08 + 09** · Backend: **all** · Est. cost: **$5–10**
 
 > **Before you start — read `learn/DAY_21_LEARN.md` (0:30).**
 > Defensibility, the teardown question, the case study. The lab below assumes it and does not re-explain it.

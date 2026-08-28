@@ -31,6 +31,7 @@ nobody prepared them for, which is the whole job.
 ## The daily shape (still 5 hours)
 
 Nothing was added to your day. The concept block grew and the lab tightened.
+The course runs Thu Aug 27 – Tue Sep 29, 2026.
 
 | Block | Time | What |
 |---|---|---|
@@ -66,8 +67,26 @@ Every one has the same seven parts, so you always know where you are:
    answer ready for.
 6. **Self-check** — 6–10 questions with answers folded below. If you can't answer them, re-read
    before the lab. The lab assumes the module.
-7. **Going deeper** — the papers and docs worth reading if a topic grabs you. Optional, and
-   marked as such.
+7. **Going deeper** — a curated, link-checked reading list. Every day names **one** thing to
+   read if you read nothing else, then the rest in the order I'd take them, each with the
+   minutes it costs and why it earns them. 107 sources across the 24 days: papers, primary
+   documentation, and the essays practitioners actually cite. Every URL was fetched and
+   verified — a dead link in training material costs you more credibility than a missing one.
+
+In the HTML navigator each module also opens with a **chapter opener** — reading time, what you
+need first, three things you'll be able to do by the end, and the key terms — so you can decide
+in fifteen seconds whether you're ready for it.
+
+---
+
+## Reading them on screen
+
+The modules are long-form prose, so read them in **`fde-bootcamp.html`** rather than in a
+markdown viewer. That page sets them like a book: serif text at a measured line length, a
+section rail on the right that tracks where you are, an S/M/L size control that remembers your
+choice, and the worked example in §3 framed as a worked example. The markdown files are the
+source of record — good for grepping and for reading on GitHub, worse for sitting with for
+seventy-five minutes.
 
 ---
 
@@ -78,13 +97,27 @@ first — the arithmetic is small on purpose. Deriving the cosine/Euclidean rela
 takes four lines and permanently fixes a confusion that reading about it does not.
 
 **Take the self-check honestly.** Cover the answers. Getting one wrong now is free; getting it
-wrong in front of a room in November is not. Anything you miss goes on a flashcard and into the
-next morning's warm-up.
+wrong in front of a room in November is not.
+
+You don't have to make the flashcards — **the self-checks *are* the deck.** All 288 questions are
+already cards in `fde-bootcamp.html`: **Flashcards** on any day page drills that day, and
+**Warm-up drill** in the sidebar deals everything due across the days you've finished. Scheduling
+is Leitner: a card you miss drops to box 1 and returns tomorrow, a card you know climbs a box and
+comes back in 2, 4, 8, then 16 days. Space flips, `1` missed, `2` got it.
+
+`learn/FLASHCARDS.csv` is the same deck as a three-column CSV if you'd rather run it in Anki on
+your phone — import it with `question`, `answer`, `tags`, and the tags give you `day01` … `day24`
+as sub-decks.
 
 **Log the confusions here too, not just in the lab.** Your `LEARNING_LOG.md` is the source
 material for the curriculum you build on Day 22. Confusions from the *learn* half are the most
 valuable entries in it, because they're the ones your future students will hit at exactly the
 same point — while being taught, before they have hands on anything to disambiguate with.
+
+**Read one external source a day, not five.** Section 7 names a single pick for a reason.
+The reading only counts if you finish it, and the fastest way to read nothing all month is to
+open a list of five tabs each morning. Take the pick; take the rest when a topic actually grabs
+you or a client question makes it urgent.
 
 **Don't skip ahead to the lab because you're impatient.** You will be, around Day 8. The
 labs are more fun. But the days where you skip the module are the days you build something

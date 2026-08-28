@@ -487,18 +487,33 @@ uninterpretable without the context-loss metric.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:09-->
+
+### If you read one thing this week
+
+**[How we built our multi-agent research system](https://www.anthropic.com/engineering/built-multi-agent-research-system)** — Jeremy Hadfield, Barry Zhang, Kenneth Lien, Florian Scholz, Jeremy Fox & Daniel Ford (Anthropic) · essay · ~35 min
+
+Supervisor/worker from §2.2 written up as a production post-mortem rather than a diagram — read the sections on delegation instructions and on token burn, which are §2.3's context loss at handoff and §2.5's cost explosion described by people who paid for both.
+
+### Then, in the order I'd take them
+
+- **[Don't Build Multi-Agents](https://cognition.com/blog/dont-build-multi-agents)** — Walden Yan (Cognition) · essay · ~15 min  
+  The strongest published argument against everything today teaches — that agents must share full traces, not summaries — so read it directly against §2.3 and you'll be able to answer the client architect who arrives having already read it.
+- **[Why Do Multi-Agent LLM Systems Fail?](https://arxiv.org/abs/2503.13657)** — Mert Cemri, Melissa Z. Pan, Shuyi Yang, Lakshya A. Agrawal, Bhavya Chopra, Rishabh Tiwari, Kurt Keutzer, Aditya Parameswaran, Dan Klein, Kannan Ramchandran, Matei Zaharia, Joseph E. Gonzalez & Ion Stoica · paper · ~40 min  
+  Skip the methodology and read the MAST taxonomy itself — 14 failure modes observed across 1,600+ real traces, grouped into design / inter-agent misalignment / verification, which is a far better checklist for responsibility diffusion than anything you'd write from first principles.
+- **[Handoffs — OpenAI Agents SDK](https://openai.github.io/openai-agents-python/handoffs/)** — OpenAI · docs · ~15 min  
+  Shows §2.1's claim — a handoff is just a tool call — as working code, and the `input_type` and input-filter sections are a typed handoff object and an explicit decision about what context crosses the boundary.
+- **[Multi-agent (LangChain docs)](https://docs.langchain.com/oss/python/langchain/multi-agent)** — LangChain · docs · ~20 min  
+  Compares subagents, handoffs, router and skills across three scenarios with model-call and token counts attached to each — the cost arithmetic of §2.5 laid out as a table you can lift into a client conversation.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - *Building Effective Agents* — Schluntz & Zhang, Anthropic engineering blog, 2024. Read the
   workflow patterns section before the agent section; it's the best short statement of §2.9.
-- *How we built our multi-agent research system* — Anthropic engineering, 2025. The honest
-  counter-case to today's argument, including the token multiple and which tasks don't parallelise.
-- *Why Do Multi-Agent LLM Systems Fail?* — Cemri et al., 2025 (UC Berkeley). An empirical failure
-  taxonomy across real frameworks; §2.3–2.5 here are three of its categories, and the paper has
-  more.
-- *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation* — Wu et al., 2023. The
-  conversational-topology framing, and a good example of how easy it is to build a system you can't
-  debug.
 - *MetaGPT: Meta Programming for a Multi-Agent Collaborative Framework* — Hong et al., 2023.
   Encoding standard operating procedures as topology.
 - *The Contract Net Protocol* — Reid G. Smith, IEEE Transactions on Computers, 1980. Supervisor/

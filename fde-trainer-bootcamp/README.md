@@ -7,12 +7,21 @@
 > USB stick, works on your phone. Sidebar navigates day by day, search covers all 184,000
 > words, and your progress saves in the browser.
 >
+> It also runs your flashcards. Click **Warm-up drill** in the sidebar for everything due
+> from the days you've finished, or **Flashcards** on any day page for that day's deck.
+> Space flips, `1` missed, `2` got it.
+>
+> The learn modules are **set like a book** in there: serif text at a readable measure, a
+> chapter opener stating what you'll be able to do by the end, a section rail that tracks
+> where you are on the page, and an S/M/L size control. Read them there, not in a markdown
+> viewer.
+>
 > Everything below is the same content as markdown, for reading on GitHub or editing.
 
 **Student:** Siva
 **Trainer:** Claude
-**Dates:** Tue Aug 25 → Mon Sep 21, 2026 (Sundays off)
-**Load:** 5 hours/day × 24 days = **120 hours**
+**Dates:** Thu Aug 27 → Tue Sep 29, 2026
+**Load:** 5 hours/day × 24 weekdays = **120 hours**
 **Target:** be a working AI Forward Deployed Engineer who can teach the material — with a deployed system, a measured eval suite, a portfolio, and a lesson you've delivered live.
 
 This course is **self-contained**. It does not depend on any external programme, cohort, or
@@ -24,10 +33,13 @@ certification. It ends with you holding the artifacts and the skills, not a plac
 
 You show up 5 hours a day. Every day has two halves — **learn, then build**:
 
-1. A **warm-up drill** (~20 min) — spaced repetition of what you'd forget otherwise.
+1. A **warm-up drill** (~20 min) — spaced repetition of what you'd forget otherwise. The
+   navigator deals it for you: **288 flashcards**, one deck per day, scheduled in Leitner
+   boxes (miss it and it returns tomorrow; know it and it goes 1 → 2 → 4 → 8 → 16 days out).
 2. A **learn module** (~1:15) — `learn/DAY_NN_LEARN.md`. Actual instruction: what the thing
    is, how it works underneath, where it breaks, what people get wrong, worked examples done
-   on paper, and a self-check. You read this *before* you touch the keyboard.
+   on paper, a self-check, and a link-checked reading list that names **one** thing to read if
+   you read nothing else. You read this *before* you touch the keyboard.
 3. A **hands-on lab** (~2:30) — code you type, run, break, and fix. Every lab ships something.
 4. A **teach-back** (~40 min) — you explain today's idea out loud, recorded, to an imaginary
    room. This is the trainer muscle. It is not optional.
@@ -89,6 +101,9 @@ fde-trainer-bootcamp/
 ├── fde-bootcamp.html  # ◀ THE WHOLE COURSE IN ONE FILE — start here
 ├── learn/             # 24 teaching modules — read BEFORE each lab
 │                      #   DAY_01_LEARN.md ... DAY_24_LEARN.md (~120k words)
+│                      #   _reading_*.json — 107 verified external sources
+│                      #   _chapter_meta.json — objectives + key terms per chapter
+│                      #   FLASHCARDS.csv — 288 cards, Anki/Quizlet importable
 ├── labs/              # 24 daily lab guides — DAY_01.md ... DAY_24.md
 │   └── aws/           # the AWS lane — AWS_LANE.md, AWS_SETUP.md,
 │                      #   AWS_COST_DISCIPLINE.md, WEEK_1..4_AWS.md
@@ -125,9 +140,16 @@ make aws-cost          # every morning, 30 seconds
 make aws-nuke          # after EVERY aws lab — the only zero-latency cost control
 make aws-login         # when something starts 403ing
 
+make html              # rebuild fde-bootcamp.html after editing any markdown
+make schedule          # slipped a day? re-anchor the whole plan around where you are
 make git-check         # before your first push: is .env tracked? anything oversized?
 make ship M="Day 07"   # lint, test, commit, push
 ```
+
+**When the schedule slips** — and it will — don't recompute anything by hand. Either click the
+date range at the top of `fde-bootcamp.html`'s sidebar and say which day you're actually on, or
+run `python scripts/schedule.py` to re-date the markdown files too. Both recompute all 24 days
+around your anchor, backwards and forwards, skipping whichever days you don't work.
 
 New to git from the Mac terminal? **`GIT_GUIDE.md`** is the full walkthrough — the mental
 model, SSH keys with Keychain, the daily loop, and a panic section covering the things that
@@ -195,10 +217,10 @@ and approval is not always instant.
 
 | Week | Dates | Theme | Ships | AWS lane |
 |---|---|---|---|---|
-| **1** | Aug 25–31 | Foundations: environment, Python for AI, embeddings, RAG, first evals | A working, evaluated RAG app with a UI | Bedrock as a fourth backend · Titan embeddings · S3 Vectors · Knowledge Bases · Bedrock Evaluations |
-| **2** | Sep 1–7 | Agents: tool calling, agentic RAG, multi-agent, memory, MCP | A multi-agent research assistant + your own MCP server | Converse tool use · AgentCore Runtime, Memory, Gateway · MCP tools on Lambda |
-| **3** | Sep 8–14 | Production: evals at depth, advanced retrieval, serving, observability, deploy, security | A deployed, traced, guardrailed API with a cost model | Guardrails · Lambda + HTTP API · CloudWatch + X-Ray · ECS Fargate · IAM/VPC · **SageMaker GPU + break-even** |
-| **4** | Sep 15–21 | The FDE + Trainer craft: discovery, capstone, curriculum design, demo day | Capstone app + a 60-min lesson you can actually deliver | AWS-shaped discovery · capstone on AWS · teardown drill · build-vs-buy framework |
+| **1** | Aug 27 – Sep 3 | Foundations: environment, Python for AI, embeddings, RAG, first evals | A working, evaluated RAG app with a UI | Bedrock as a fourth backend · Titan embeddings · S3 Vectors · Knowledge Bases · Bedrock Evaluations |
+| **2** | Sep 4 – Sep 11 | Agents: tool calling, agentic RAG, multi-agent, memory, MCP | A multi-agent research assistant + your own MCP server | Converse tool use · AgentCore Runtime, Memory, Gateway · MCP tools on Lambda |
+| **3** | Sep 14 – Sep 21 | Production: evals at depth, advanced retrieval, serving, observability, deploy, security | A deployed, traced, guardrailed API with a cost model | Guardrails · Lambda + HTTP API · CloudWatch + X-Ray · ECS Fargate · IAM/VPC · **SageMaker GPU + break-even** |
+| **4** | Sep 22 – Sep 29 | The FDE + Trainer craft: discovery, capstone, curriculum design, demo day | Capstone app + a 60-min lesson you can actually deliver | AWS-shaped discovery · capstone on AWS · teardown drill · build-vs-buy framework |
 
 Full day-by-day breakdown is in the course hub and in `labs/`.
 

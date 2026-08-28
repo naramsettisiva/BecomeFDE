@@ -508,7 +508,26 @@ real time and you cannot classify them while looking up the classification.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:23-->
+
+### If you read one thing this week
+
+**[speaking.io — Tips for Public Speaking](https://speaking.io/)** — Zach Holman · docs · ~45 min
+
+The most practical free guide to technical speaking there is — read "Prep for the Big Day" and "Deliver and Do Your Thing" the night before your one-take.
+
+### Then, in the order I'd take them
+
+- **[Teaching Tech Together — ch. 8, Teaching as a Performance Art](https://teachtogether.tech/en/index.html)** — Greg Wilson · docs · ~30 min  
+  Live-coding technique specifically — pacing, typos, and why narrating your mistakes teaches more than a clean run.
+- **[Ideas for making better conference talks & conferences](https://jvns.ca/blog/2016/06/06/make-better-conference-talks/)** — Julia Evans (Jun 2016) · essay · ~15 min  
+  Her test — "say a new-to-your-audience thing in an understandable way" — is the one to hold your teach-back against. Also the argument for getting feedback from an actual target listener before you deliver.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - Your own Day 6 recording — ten minutes of it, today, *before* you deliver. It's tonight's baseline,
   and watching it first makes the comparison honest instead of flattering.

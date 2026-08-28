@@ -1,4 +1,4 @@
-# AWS Lane — Week 1 (Aug 25–31)
+# AWS Lane — Week 1 (Aug 27 – Sep 3)
 
 **macOS. Est. AWS spend this week: $4–8. Est. added time: 3h 45m across six days.**
 

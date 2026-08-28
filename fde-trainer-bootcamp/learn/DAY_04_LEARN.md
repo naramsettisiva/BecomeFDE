@@ -425,19 +425,32 @@ clause violation, and if the partition isn't solid you'll debug them by guessing
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks* — Lewis et al. (2020). The
-  original paper, and worth seeing how different its formulation is from what we now call RAG.
-- *Lost in the Middle: How Language Models Use Long Contexts* — Liu et al. (2023). Short. Look at
-  the U-curve figures and the comparison against closed-book performance — that comparison is the
-  part people forget.
-- *Enabling Large Language Models to Generate Text with Citations* — Gao et al. (2023), the ALCE
-  benchmark: the academic treatment of §2.7 and useful vocabulary for the citation conversation.
+<!--reading:04-->
+
+### If you read one thing this week
+
+**[Lost in the Middle: How Language Models Use Long Contexts](https://arxiv.org/abs/2307.03172)** — Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni & Liang (2023) · paper · ~35 min
+
+Short, and the U-shaped curve figures are the entire argument for §2.5's ordering decision; do not skip the closed-book comparison, which is the part people forget when they claim more context is always better.
+
+### Then, in the order I'd take them
+
+- **[Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)** — Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal, Küttler, Lewis, Yih, Rocktäschel, Riedel & Kiela (NeurIPS 2020) · paper · ~45 min  
+  The paper that named the thing — read §2 and note how different the original formulation (a trained, differentiable retriever) is from the prompt-assembly pipeline you are building, because that gap is a question you will be asked in a room.
+- **[Enabling Large Language Models to Generate Text with Citations (ALCE)](https://arxiv.org/abs/2305.14627)** — Tianyu Gao, Howard Yen, Jiatong Yu & Danqi Chen (2023) · paper · ~40 min  
+  The academic treatment of §2.7's citation grades — read the citation-recall and citation-precision definitions in particular, since those two metrics give you the vocabulary to argue that Bronze citations are not citations.
+- **[Citations](https://platform.claude.com/docs/en/build-with-claude/citations)** — Anthropic · docs · ~25 min  
+  A shipped implementation of Gold citations from §2.7 — character-index spans back into the source document rather than model-generated reference numbers, which is precisely the verifiability property you are building by hand in the lab.
+- **[Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997)** — Gao, Xiong, Gao, Jia, Pan, Bi, Dai, Sun, Wang & Wang (2023) · paper · ~30 min  
+  Skim it as a map, not a reading list — the naive/advanced/modular taxonomy and its figures give you shared vocabulary for a client design review, and it previews where Day 8 goes.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - *Self-RAG* — Asai et al. (2023). One rigorous approach to the refusal problem in §2.2.
-- *Retrieval-Augmented Generation for Large Language Models: A Survey* — Gao et al. (2023). A map
-  of the space, not a reading list; the naive/advanced/modular taxonomy is useful shared
-  vocabulary in a design review.
 
 ---
 

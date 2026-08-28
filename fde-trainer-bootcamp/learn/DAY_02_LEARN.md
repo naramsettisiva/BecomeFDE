@@ -398,18 +398,33 @@ decorator are where you'll actually lose time today, and the lab won't re-explai
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
 
-- **Pydantic v2 docs — "JSON Schema" and "Validators."** Read how `model_json_schema()` serialises
-  `Field` metadata; that output is literally what you paste into the prompt at Level 2.
-- **`tenacity` docs — `retry_if_exception_type`, `wait_exponential_jitter`, `stop_after_attempt`.**
-  Ten minutes, then write down your provider's retryable exception list.
-- *Exponential Backoff and Jitter* — Marc Brooker, AWS Architecture Blog (2015). Short, has the
-  simulation graphs, and full jitter wins. The canonical citation for §2.7.
+<!--reading:02-->
+
+### If you read one thing this week
+
+**[Structured outputs (JSON outputs and strict tool use)](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)** — Anthropic · docs · ~25 min
+
+This is Level 3 of §2.2 as an actual product surface — read the schema-complexity limits and the grammar-compilation caching notes, because those constraints are exactly what decide whether Level 3 is available to you or you fall back to Level 2 with a repair loop.
+
+### Then, in the order I'd take them
+
+- **[Efficient Guided Generation for Large Language Models](https://arxiv.org/abs/2307.09702)** — Brandon T. Willard & Rémi Louf (2023) · paper · ~40 min  
+  The finite-state-machine construction under constrained decoding, and the section you want is §3 — it makes clear that the constraint masks logits rather than checking output, which is the distinction §2.3 hangs on.
+- **[Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models](https://arxiv.org/abs/2408.02442)** — Tam, Wu, Tsai, Lin, Lee & Chen (2024) · paper · ~30 min  
+  The contested claim that forcing JSON costs you reasoning quality — read the tables, then note the methodology critiques, because a trainer who can describe a disputed result honestly is worth more than one who asserts it.
+- **[Pydantic — JSON Schema](https://pydantic.dev/docs/validation/latest/concepts/json_schema/)** — Pydantic documentation · docs · ~20 min  
+  `model_json_schema()` output is literally what you paste into the prompt at Level 2, so read how `Field` descriptions and constraints serialise — that serialisation is why §2.4's claim that field order is an instruction actually holds.
+- **[Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)** — Marc Brooker (AWS Architecture Blog, 2015) · essay · ~15 min  
+  You have seen this before, but it is the canonical citation for §2.7 and the simulation graphs are the fastest way to win the 'why full jitter, not plain exponential' argument in a client's codebase.
+
+<!--/reading-->
+
+### Also mentioned in this module
+
 - *Release It!* — Michael Nygard (2nd ed., 2018), on Circuit Breaker and Bulkhead. You've seen
   these; the value is having the vocabulary when arguing for them in someone else's codebase.
-- *Efficient Guided Generation for Large Language Models* — Willard & Louf (2023), the `outlines`
-  paper: the finite-state-machine construction underneath constrained decoding.
 - *Let Me Speak Freely?* — Tam et al. (2024). Read it alongside its critiques; a good example of a
   contested result you should describe rather than assert.
 

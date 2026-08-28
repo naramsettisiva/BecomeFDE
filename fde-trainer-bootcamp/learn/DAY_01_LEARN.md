@@ -353,12 +353,33 @@ this and won't re-explain it.
 
 ---
 
-## 7. Going deeper (optional)
+## 7. Going deeper
+
+<!--reading:01-->
+
+### If you read one thing this week
+
+**[Transformers, the tech behind LLMs (Deep Learning, Chapter 5)](https://www.3blue1brown.com/lessons/gpt)** — Grant Sanderson (3Blue1Brown), text adaptation by Justin Sun · video · ~30 min
+
+Gives you the picture behind §2.1 and §2.2 in one sitting — next-token distribution, softmax, and temperature as a knob on that softmax — without assuming any ML background, and the page carries the same content as text if you would rather read it.
+
+### Then, in the order I'd take them
+
+- **[Tiktokenizer — interactive tokeniser playground](https://tiktokenizer.vercel.app/)** — dqbd · interactive · ~15 min  
+  Paste your own domain strings (invoice numbers, SKUs, '$65 per hour', a JSON blob) and watch the token boundaries — fifteen minutes here makes §2.3's token arithmetic concrete in a way no article does.
+- **[How to generate text: using different decoding methods for language generation with Transformers](https://huggingface.co/blog/how-to-generate)** — Patrick von Platen (Hugging Face) · essay · ~25 min  
+  The sampler is the part of §2.2 that people hand-wave; this walks greedy, beam, temperature, top-k and top-p with worked distributions, so you can explain why temperature=0 is not actually determinism.
+- **[Messages API reference](https://platform.claude.com/docs/en/api/messages)** — Anthropic · docs · ~20 min  
+  This is §2.6 in primary-source form: read the `stop_reason` enum (`max_tokens` vs `end_turn` vs `refusal`) and the `usage` object, because those two fields are the only signal you get for the failure mode with no error.
+- **[Attention Is All You Need](https://arxiv.org/abs/1706.03762)** — Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser & Polosukhin (2017) · paper · ~45 min  
+  Read Figure 1 and §3.1–3.2 only and skip the training and results sections — you want the shape of the architecture so 'context window' and 'quadratic attention cost' stop being magic words when a client asks.
+
+<!--/reading-->
+
+### Also mentioned in this module
 
 - **Tokenisation, interactively** — OpenAI's tokeniser playground, or `tiktoken` locally. Ten
   minutes here is worth more than any article.
-- *Attention Is All You Need* (Vaswani et al., 2017) — the transformer paper. Read the
-  architecture diagram and §3.2; skip the rest on a first pass.
 - *Training language models to follow instructions with human feedback* (Ouyang et al., 2022) —
   the InstructGPT paper. This is the answer to the "how does it follow instructions" question in §5.
 - Your provider's pricing page. **Read it once properly today**, then re-read it monthly. Prices

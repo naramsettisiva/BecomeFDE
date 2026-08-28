@@ -1,6 +1,6 @@
 # Day 06 — Week 1 Capstone: Ship It, Demo It, Teach It
 
-**Mon Aug 31, 2026** · Week 1 · Maps to: **Module 07 — End-to-End Systems** · Backend: **local** + `[PAID]` · Est. cost: **$1–2**
+**Thu Sep 3, 2026** · Week 1 · Maps to: **Module 07 — End-to-End Systems** · Backend: **local** + `[PAID]` · Est. cost: **$1–2**
 
 > **Before you start — read `learn/DAY_06_LEARN.md` (0:45).**
 > Week 1 synthesis; how demos and lessons are structured. The lab below assumes it and does not re-explain it.
@@ -44,6 +44,14 @@ is the format of every conference talk and every cohort session you will ever ru
 ---
 
 ## Block 0 — Warm-up: Week 1 recall (0:30)
+
+<!--cards-->
+> **Cards first — 5 minutes.** Open **Warm-up drill** in the sidebar of `fde-bootcamp.html`.
+> It deals you every card that is due from the days you have finished, hardest box first, and
+> it is capped at 20 so it stays a drill. Cards you miss come back tomorrow; cards you know
+> go 1 → 2 → 4 → 8 → 16 days out. Then do the recall below, closed book.
+<!--/cards-->
+
 
 Closed book, 20 questions. Write answers in `notebooks/day06_recall.md`, then check.
 Anything you miss goes on a flashcard and gets reviewed every morning of Week 2.
